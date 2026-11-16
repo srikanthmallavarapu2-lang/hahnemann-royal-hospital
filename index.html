@@ -1,0 +1,2238 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hahnemann Royal Advanced Homeopathic Hospital & Research Institute | NABH Accredited</title>
+  <meta name="description" content="Premier NABH Accredited Super-Specialty Homeopathic Hospital. Classical constitutional medicine, interactive OP booking, and animated disease-specific diet & nutrition calculator.">
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              50: '#f0fdf9',
+              100: '#ccfbf1',
+              200: '#99f6e4',
+              300: '#5eead4',
+              400: '#2dd4bf',
+              500: '#14b8a6',
+              600: '#0d9488',
+              700: '#0f766e',
+              800: '#115e59',
+              900: '#134e4a',
+              950: '#042f2e',
+            },
+            gold: {
+              100: '#fef3c7',
+              300: '#fcd34d',
+              500: '#f59e0b',
+              600: '#d97706',
+              700: '#b45309',
+            },
+            royal: {
+              900: '#06201b',
+              950: '#031411',
+            }
+          },
+          fontFamily: {
+            serif: ['Cinzel', 'Playfair Display', 'Georgia', 'serif'],
+            sans: ['Inter', 'Plus Jakarta Sans', 'system-ui', 'sans-serif'],
+          },
+          boxShadow: {
+            'luxury': '0 20px 45px -15px rgba(6, 78, 59, 0.12), 0 0 0 1px rgba(20, 184, 166, 0.1)',
+            'glow': '0 0 25px -5px rgba(20, 184, 166, 0.4)',
+            'gold-glow': '0 0 25px -5px rgba(245, 158, 11, 0.35)',
+          }
+        }
+      }
+    }
+  </script>
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700;800&family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+  <!-- Lucide Icons (Vanilla embed or SVG) -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <style>
+    body {
+      font-family: 'Inter', sans-serif;
+    }
+    .font-luxury {
+      font-family: 'Playfair Display', Georgia, serif;
+    }
+    .font-royal {
+      font-family: 'Cinzel', serif;
+    }
+    /* Smooth glass background */
+    .glass-card {
+      background: rgba(255, 255, 255, 0.85);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border: 1px solid rgba(20, 184, 166, 0.15);
+    }
+    .glass-dark {
+      background: rgba(6, 32, 27, 0.85);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border: 1px solid rgba(20, 184, 166, 0.25);
+    }
+    .gold-gradient-text {
+      background: linear-gradient(135deg, #d97706 0%, #f59e0b 50%, #b45309 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    .emerald-gradient-text {
+      background: linear-gradient(135deg, #0d9488 0%, #065f46 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    /* Subtle pulse animation for live status */
+    @keyframes livePulse {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.5; transform: scale(1.2); }
+    }
+    .live-dot {
+      animation: livePulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+    }
+    /* Print Styles for OP Pass and Diet Sheet */
+    @media print {
+      body * {
+        visibility: hidden;
+      }
+      #printable-op-pass, #printable-op-pass *,
+      #printable-diet-protocol, #printable-diet-protocol * {
+        visibility: visible;
+      }
+      #printable-op-pass, #printable-diet-protocol {
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100%;
+      }
+    }
+  </style>
+</head>
+<body class="bg-stone-50 text-slate-800 antialiased selection:bg-brand-500 selection:text-white">
+
+  <!-- ==================== TOP EMERGENCY & ACCREDITATION BANNER ==================== -->
+  <div class="bg-royal-950 text-emerald-100 text-xs py-2 px-4 border-b border-brand-900/50">
+    <div class="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-2">
+      <div class="flex items-center gap-4 flex-wrap justify-center">
+        <span class="inline-flex items-center gap-1.5 bg-brand-900/80 text-brand-300 px-2.5 py-0.5 rounded-full font-medium text-[11px] border border-brand-700/50">
+          <span class="w-2 h-2 rounded-full bg-emerald-400 live-dot"></span>
+          OPD Active Today: 08:30 AM - 08:30 PM
+        </span>
+        <span class="hidden sm:inline text-slate-400">|</span>
+        <span class="flex items-center gap-1 text-slate-300">
+          <i class="fa-solid fa-award text-gold-500"></i>
+          NABH Accredited & ISO 9001:2015 Super-Specialty
+        </span>
+        <span class="hidden sm:inline text-slate-400">|</span>
+        <span class="text-emerald-400 font-semibold tracking-wide">
+          <i class="fa-solid fa-phone-volume mr-1 text-gold-400"></i>
+          24/7 Acute Care Hotline: 1800-424-6336
+        </span>
+      </div>
+      <div class="flex items-center gap-4 text-xs font-medium">
+        <a href="#materia-medica" class="hover:text-gold-400 transition-colors">Materia Medica Library</a>
+        <a href="#research" class="hover:text-gold-400 transition-colors">Clinical Research</a>
+        <button onclick="toggleAcuteGuideModal()" class="text-gold-400 hover:text-gold-300 font-semibold flex items-center gap-1">
+          <i class="fa-solid fa-kit-medical"></i> Homeo First-Aid Guide
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==================== MAIN HEADER / NAVIGATION ==================== -->
+  <header class="sticky top-0 z-40 bg-white/95 backdrop-blur-md border-b border-brand-100/80 shadow-sm transition-all duration-300" id="main-header">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+      
+      <!-- Brand Logo -->
+      <a href="#" class="flex items-center gap-3.5 group">
+        <div class="w-12 h-12 rounded-xl bg-gradient-to-br from-brand-700 via-brand-800 to-royal-950 flex items-center justify-center text-white shadow-md shadow-brand-900/20 group-hover:scale-105 transition-transform border border-gold-500/30">
+          <i class="fa-solid fa-leaf text-2xl text-gold-400"></i>
+        </div>
+        <div>
+          <div class="flex items-center gap-1.5">
+            <span class="font-royal text-lg font-bold tracking-wider text-slate-900 leading-tight">HAHNEMANN ROYAL</span>
+            <span class="text-[9px] uppercase tracking-widest bg-gold-500/10 text-gold-700 px-1.5 py-0.5 rounded border border-gold-500/30 font-semibold">Institute</span>
+          </div>
+          <p class="text-[10px] tracking-widest uppercase font-medium text-brand-700">Advanced Homeopathic Hospital & Research</p>
+        </div>
+      </a>
+
+      <!-- Desktop Nav -->
+      <nav class="hidden lg:flex items-center gap-7 text-sm font-medium text-slate-700">
+        <a href="#specialties" class="hover:text-brand-700 transition-colors py-2">Specialties</a>
+        <a href="#doctors" class="hover:text-brand-700 transition-colors py-2">Senior Consultants</a>
+        <a href="#op-booking" class="hover:text-brand-700 transition-colors py-2 flex items-center gap-1">
+          <span>OP Booking</span>
+          <span class="bg-brand-100 text-brand-800 text-[10px] px-1.5 py-0.5 rounded-full font-bold">Live</span>
+        </a>
+        <a href="#diet-calculator" class="hover:text-brand-700 transition-colors py-2 text-brand-800 font-semibold flex items-center gap-1.5">
+          <i class="fa-solid fa-calculator text-brand-600"></i>
+          <span>Disease Diet Tool</span>
+          <span class="bg-gold-100 text-gold-800 text-[9px] px-1.5 py-0.2 rounded font-bold uppercase">New</span>
+        </a>
+        <a href="#materia-medica" class="hover:text-brand-700 transition-colors py-2">Materia Medica</a>
+        <a href="#testimonials" class="hover:text-brand-700 transition-colors py-2">Case Outcomes</a>
+      </nav>
+
+      <!-- Action CTAs -->
+      <div class="hidden sm:flex items-center gap-3">
+        <a href="#diet-calculator" class="px-4 py-2 text-xs font-semibold rounded-lg text-brand-800 bg-brand-50 hover:bg-brand-100 border border-brand-200 transition-all flex items-center gap-1.5">
+          <i class="fa-solid fa-apple-whole text-emerald-600"></i>
+          Diet Calculator
+        </a>
+        <a href="#op-booking" class="px-5 py-2.5 text-xs font-bold uppercase tracking-wider rounded-lg text-white bg-gradient-to-r from-brand-700 via-brand-800 to-royal-950 hover:from-brand-600 hover:to-brand-900 shadow-md shadow-brand-900/20 hover:shadow-brand-600/30 transition-all transform hover:-translate-y-0.5 flex items-center gap-2 border border-gold-500/40">
+          <i class="fa-solid fa-calendar-check text-gold-400"></i>
+          Book OP Slot
+        </a>
+      </div>
+
+      <!-- Mobile Menu Button -->
+      <button onclick="toggleMobileNav()" class="lg:hidden p-2 text-slate-700 hover:text-brand-700 focus:outline-none">
+        <i class="fa-solid fa-bars-staggered text-xl"></i>
+      </button>
+    </div>
+
+    <!-- Mobile Drawer -->
+    <div id="mobile-nav" class="hidden lg:hidden bg-white border-b border-brand-100 px-4 pt-3 pb-6 space-y-3">
+      <a href="#specialties" onclick="toggleMobileNav()" class="block py-2 text-slate-800 font-medium">Specialties</a>
+      <a href="#doctors" onclick="toggleMobileNav()" class="block py-2 text-slate-800 font-medium">Senior Consultants</a>
+      <a href="#op-booking" onclick="toggleMobileNav()" class="block py-2 text-brand-700 font-bold">OP Booking Tool</a>
+      <a href="#diet-calculator" onclick="toggleMobileNav()" class="block py-2 text-emerald-700 font-bold">Disease Diet Calculator</a>
+      <a href="#materia-medica" onclick="toggleMobileNav()" class="block py-2 text-slate-800 font-medium">Materia Medica Library</a>
+      <a href="#research" onclick="toggleMobileNav()" class="block py-2 text-slate-800 font-medium">Clinical Evidence</a>
+      <div class="pt-3 border-t border-slate-100 flex flex-col gap-2">
+        <a href="#op-booking" onclick="toggleMobileNav()" class="w-full text-center py-2.5 bg-brand-700 text-white rounded-lg font-bold text-sm">Book OP Consultation</a>
+        <a href="#diet-calculator" onclick="toggleMobileNav()" class="w-full text-center py-2.5 bg-brand-50 text-brand-800 rounded-lg font-bold text-sm border border-brand-200">Open Diet Calculator</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- ==================== HERO SECTION: MEDICAL LUXURY & TRUST ==================== -->
+  <section class="relative overflow-hidden bg-gradient-to-b from-brand-950 via-royal-900 to-brand-900 text-white py-20 lg:py-28">
+    <!-- Ambient glow decorative layers -->
+    <div class="absolute -top-40 -right-40 w-96 h-96 bg-brand-500/20 rounded-full blur-3xl pointer-events-none"></div>
+    <div class="absolute -bottom-40 -left-40 w-96 h-96 bg-gold-500/15 rounded-full blur-3xl pointer-events-none"></div>
+    <div class="absolute inset-0 bg-[radial-gradient(#14b8a6_1px,transparent_1px)] [background-size:24px_24px] opacity-10 pointer-events-none"></div>
+
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+      <div class="grid lg:grid-cols-12 gap-12 items-center">
+        
+        <!-- Left Hero Content -->
+        <div class="lg:col-span-7 space-y-6">
+          <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-brand-900/90 border border-brand-500/30 text-xs font-semibold text-brand-300">
+            <span class="w-2 h-2 rounded-full bg-gold-400"></span>
+            Similia Similibus Curentur • Classical Hahnemannian Medicine
+          </div>
+
+          <h1 class="font-luxury text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight text-white leading-tight">
+            Restoring Vital Force with <span class="gold-gradient-text italic font-serif">Scientific Precision</span> & Pure Compassion.
+          </h1>
+
+          <p class="text-base sm:text-lg text-emerald-100/85 leading-relaxed font-light max-w-2xl">
+            Welcome to Asia's pioneering 150-bed NABH-accredited Super-Specialty Homeopathic Hospital. We fuse 230 years of classical constitutional homeopathy with modern biomarker diagnostics and tailored disease nutrition protocols for permanent root-cause healing.
+          </p>
+
+          <!-- Action Buttons -->
+          <div class="flex flex-wrap gap-4 pt-2">
+            <a href="#op-booking" class="px-7 py-3.5 rounded-xl font-bold text-sm uppercase tracking-wider text-slate-950 bg-gradient-to-r from-gold-300 via-gold-500 to-gold-600 hover:from-gold-400 hover:to-gold-500 shadow-lg shadow-gold-500/25 transition-all transform hover:-translate-y-0.5 flex items-center gap-2">
+              <i class="fa-solid fa-calendar-check text-slate-950"></i>
+              Book OP Consultation
+            </a>
+            <a href="#diet-calculator" class="px-6 py-3.5 rounded-xl font-semibold text-sm text-white bg-white/10 hover:bg-white/15 border border-white/20 backdrop-blur-md transition-all flex items-center gap-2">
+              <i class="fa-solid fa-calculator text-emerald-300"></i>
+              Disease Diet Calculator
+            </a>
+          </div>
+
+          <!-- Trust Badges -->
+          <div class="pt-8 grid grid-cols-2 sm:grid-cols-4 gap-4 border-t border-brand-800/80">
+            <div>
+              <div class="text-2xl sm:text-3xl font-extrabold text-gold-400 font-royal">125K+</div>
+              <div class="text-xs text-emerald-200/70 uppercase tracking-wider mt-0.5">Chronic Cases Healed</div>
+            </div>
+            <div>
+              <div class="text-2xl sm:text-3xl font-extrabold text-white font-royal">98.4%</div>
+              <div class="text-xs text-emerald-200/70 uppercase tracking-wider mt-0.5">Clinical Efficacy</div>
+            </div>
+            <div>
+              <div class="text-2xl sm:text-3xl font-extrabold text-gold-400 font-royal">35+</div>
+              <div class="text-xs text-emerald-200/70 uppercase tracking-wider mt-0.5">MD Homeopaths</div>
+            </div>
+            <div>
+              <div class="text-2xl sm:text-3xl font-extrabold text-white font-royal">0%</div>
+              <div class="text-xs text-emerald-200/70 uppercase tracking-wider mt-0.5">Steroids / Adverse Effects</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right Hero Live Hospital Widget -->
+        <div class="lg:col-span-5">
+          <div class="glass-dark rounded-2xl p-6 sm:p-8 shadow-2xl relative border border-emerald-500/30">
+            <div class="flex items-center justify-between pb-4 border-b border-emerald-800/60">
+              <div class="flex items-center gap-2.5">
+                <div class="w-3 h-3 rounded-full bg-emerald-400 live-dot"></div>
+                <h3 class="text-white font-bold text-sm uppercase tracking-wider">Live OPD Reception Desk</h3>
+              </div>
+              <span class="text-[11px] font-mono text-emerald-300 bg-brand-900/80 px-2 py-0.5 rounded border border-brand-600/40">Station 01-A</span>
+            </div>
+
+            <!-- OPD Live Token Meter -->
+            <div class="mt-5 p-4 rounded-xl bg-black/30 border border-brand-700/30 flex items-center justify-between">
+              <div>
+                <p class="text-[11px] uppercase tracking-wider text-slate-400 font-semibold">Current Serving Token</p>
+                <p class="text-3xl font-black text-gold-400 font-mono tracking-tight" id="live-token-number">OP-48</p>
+                <p class="text-[10px] text-emerald-400">Dr. Samuel H. Rao • Room 204</p>
+              </div>
+              <div class="text-right">
+                <p class="text-[11px] uppercase tracking-wider text-slate-400 font-semibold">Average Wait Time</p>
+                <p class="text-2xl font-bold text-white font-mono">11 <span class="text-xs font-normal text-slate-300">mins</span></p>
+                <span class="inline-block text-[10px] bg-emerald-900/60 text-emerald-300 px-2 py-0.5 rounded-full border border-emerald-600/40">Smooth Flow</span>
+              </div>
+            </div>
+
+            <!-- Quick Department Highlights -->
+            <div class="mt-4 space-y-2.5">
+              <div class="flex items-center justify-between text-xs p-2.5 rounded-lg bg-white/5 hover:bg-white/10 transition-colors">
+                <span class="text-slate-200 font-medium flex items-center gap-2">
+                  <i class="fa-solid fa-dna text-brand-400"></i> Constitutional Chronic Clinic
+                </span>
+                <span class="text-emerald-300 font-mono text-[11px]">8 Available Today</span>
+              </div>
+              <div class="flex items-center justify-between text-xs p-2.5 rounded-lg bg-white/5 hover:bg-white/10 transition-colors">
+                <span class="text-slate-200 font-medium flex items-center gap-2">
+                  <i class="fa-solid fa-child text-gold-400"></i> Pediatric & Neuro-Developmental
+                </span>
+                <span class="text-emerald-300 font-mono text-[11px]">5 Available Today</span>
+              </div>
+              <div class="flex items-center justify-between text-xs p-2.5 rounded-lg bg-white/5 hover:bg-white/10 transition-colors">
+                <span class="text-slate-200 font-medium flex items-center gap-2">
+                  <i class="fa-solid fa-hand-dots text-emerald-400"></i> Autoimmune & Dermatology Care
+                </span>
+                <span class="text-emerald-300 font-mono text-[11px]">3 Available Today</span>
+              </div>
+            </div>
+
+            <!-- Direct Instant Book Action -->
+            <div class="mt-6">
+              <a href="#op-booking" class="w-full block text-center py-3 rounded-xl bg-gradient-to-r from-emerald-600 to-teal-500 hover:from-emerald-500 hover:to-teal-400 text-white font-bold text-xs uppercase tracking-widest shadow-md shadow-emerald-900/40 transition-all">
+                Select Your Time Slot & Doctor &rarr;
+              </a>
+            </div>
+
+            <p class="text-[10px] text-center text-slate-400 mt-3">
+              <i class="fa-solid fa-shield-halved text-brand-400 mr-1"></i> Patient Confidentiality Protected • NABH Hospital ID: NABH-HOM-9022
+            </p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== ANIMATED DISEASE DIET CALCULATOR (CORE REQUIRED FEATURE) ==================== -->
+  <section id="diet-calculator" class="py-20 bg-stone-100/80 relative">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <!-- Section Header -->
+      <div class="text-center max-w-3xl mx-auto space-y-3">
+        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-100 text-emerald-800 text-xs font-bold uppercase tracking-wider">
+          <i class="fa-solid fa-seedling text-emerald-600"></i>
+          Homeopathic Nutritional Science
+        </div>
+        <h2 class="font-luxury text-3xl sm:text-4xl font-bold text-slate-900">
+          Animated Disease-Specific <span class="emerald-gradient-text">Diet & Vitality Calculator</span>
+        </h2>
+        <p class="text-slate-600 text-sm sm:text-base leading-relaxed">
+          In classical homeopathy, nutrition is the vital substratum that sustains the remedy's curative action. Select your disease condition to compute your exact caloric target, macronutrient distribution, foods to eliminate (including homeopathic antidote foods), and customized 5-meal curative blueprint.
+        </p>
+      </div>
+
+      <!-- Main Calculator Interactive Container -->
+      <div class="mt-12 grid lg:grid-cols-12 gap-8 items-start">
+        
+        <!-- Left: Interactive Configuration Controls -->
+        <div class="lg:col-span-5 bg-white rounded-2xl p-6 sm:p-8 shadow-luxury border border-brand-100 space-y-6">
+          <div class="flex items-center justify-between pb-4 border-b border-slate-100">
+            <h3 class="font-bold text-slate-900 text-lg flex items-center gap-2">
+              <span class="w-8 h-8 rounded-lg bg-brand-50 text-brand-700 flex items-center justify-center text-sm font-black">1</span>
+              Patient Condition & Vitals
+            </h3>
+            <button onclick="resetDietCalculator()" class="text-xs text-slate-400 hover:text-brand-700 font-medium">Reset</button>
+          </div>
+
+          <!-- Disease Selector -->
+          <div>
+            <label class="block text-xs font-bold uppercase tracking-wider text-slate-700 mb-2">
+              Select Primary Health Condition <span class="text-red-500">*</span>
+            </label>
+            <div class="relative">
+              <select id="diet-disease-select" onchange="computeDietProtocol()" class="w-full bg-stone-50 border border-slate-200 rounded-xl px-4 py-3 text-sm font-semibold text-slate-900 focus:outline-none focus:ring-2 focus:ring-brand-500 focus:border-brand-500 transition-all appearance-none cursor-pointer">
+                <option value="diabetes" selected>Type 2 Diabetes & Insulin Resistance</option>
+                <option value="hypertension">Hypertension & Cardiovascular Health</option>
+                <option value="psoriasis">Psoriasis, Eczema & Autoimmune Skin</option>
+                <option value="gerd">GERD, Acid Reflux & Irritable Bowel (IBS)</option>
+                <option value="thyroid">Hypothyroidism & Slow Metabolism</option>
+                <option value="fatty-liver">Fatty Liver (NAFLD) & High Cholesterol</option>
+                <option value="arthritis">Rheumatoid Arthritis & High Uric Acid</option>
+                <option value="migraine">Chronic Migraine & Tension Headaches</option>
+                <option value="asthma">Bronchial Asthma & Respiratory Allergies</option>
+                <option value="pcod">PCOD / PCOS & Hormonal Imbalance</option>
+              </select>
+              <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-4 text-slate-500">
+                <i class="fa-solid fa-chevron-down text-xs"></i>
+              </div>
+            </div>
+            <p class="text-[11px] text-slate-500 mt-1.5 flex items-center gap-1">
+              <i class="fa-solid fa-circle-info text-brand-600"></i> Calibrated to Hahnemann's Organon § 259–261 dietary guidelines.
+            </p>
+          </div>
+
+          <!-- Gender & Age -->
+          <div class="grid grid-cols-2 gap-4">
+            <div>
+              <label class="block text-xs font-bold uppercase tracking-wider text-slate-700 mb-2">Biological Sex</label>
+              <div class="grid grid-cols-2 gap-2">
+                <button type="button" onclick="setGender('male')" id="btn-gender-male" class="py-2.5 text-xs font-bold rounded-lg border border-brand-500 bg-brand-50 text-brand-800 transition-all text-center">Male</button>
+                <button type="button" onclick="setGender('female')" id="btn-gender-female" class="py-2.5 text-xs font-bold rounded-lg border border-slate-200 bg-stone-50 text-slate-600 hover:bg-slate-100 transition-all text-center">Female</button>
+              </div>
+            </div>
+            <div>
+              <label class="block text-xs font-bold uppercase tracking-wider text-slate-700 mb-2">Age (Years)</label>
+              <input type="number" id="diet-age" value="38" min="12" max="100" oninput="computeDietProtocol()" class="w-full bg-stone-50 border border-slate-200 rounded-lg px-3 py-2.5 text-sm font-semibold text-slate-900 focus:ring-2 focus:ring-brand-500 focus:outline-none">
+            </div>
+          </div>
+
+          <!-- Weight & Height with interactive range -->
+          <div class="space-y-4">
+            <div>
+              <div class="flex justify-between text-xs font-bold uppercase tracking-wider text-slate-700 mb-1">
+                <span>Weight (kg)</span>
+                <span id="weight-val" class="text-brand-700 font-mono text-sm font-black">72 kg</span>
+              </div>
+              <input type="range" id="diet-weight" min="40" max="150" value="72" oninput="updateWeightDisplay(this.value)" class="w-full accent-brand-600 cursor-pointer">
+            </div>
+
+            <div>
+              <div class="flex justify-between text-xs font-bold uppercase tracking-wider text-slate-700 mb-1">
+                <span>Height (cm)</span>
+                <span id="height-val" class="text-brand-700 font-mono text-sm font-black">172 cm</span>
+              </div>
+              <input type="range" id="diet-height" min="130" max="210" value="172" oninput="updateHeightDisplay(this.value)" class="w-full accent-brand-600 cursor-pointer">
+            </div>
+          </div>
+
+          <!-- Activity Level -->
+          <div>
+            <label class="block text-xs font-bold uppercase tracking-wider text-slate-700 mb-2">Physical Activity Level</label>
+            <select id="diet-activity" onchange="computeDietProtocol()" class="w-full bg-stone-50 border border-slate-200 rounded-lg px-3 py-2.5 text-xs font-semibold text-slate-800 focus:outline-none focus:ring-2 focus:ring-brand-500">
+              <option value="1.2">Sedentary (Little or no exercise / desk job)</option>
+              <option value="1.375" selected>Lightly Active (Gentle yoga / 30m brisk walk)</option>
+              <option value="1.55">Moderately Active (Moderate exercise 3-5 days/week)</option>
+              <option value="1.725">Very Active (Heavy training / active manual work)</option>
+            </select>
+          </div>
+
+          <!-- Dietary Preference -->
+          <div>
+            <label class="block text-xs font-bold uppercase tracking-wider text-slate-700 mb-2">Dietary Pattern</label>
+            <div class="grid grid-cols-3 gap-2 text-center">
+              <button type="button" onclick="setDietType('veg')" id="btn-diet-veg" class="py-2 text-xs font-bold rounded-lg border border-brand-500 bg-brand-50 text-brand-800 transition-all">Pure Veg</button>
+              <button type="button" onclick="setDietType('vegan')" id="btn-diet-vegan" class="py-2 text-xs font-bold rounded-lg border border-slate-200 bg-stone-50 text-slate-600 hover:bg-slate-100 transition-all">Vegan</button>
+              <button type="button" onclick="setDietType('nonveg')" id="btn-diet-nonveg" class="py-2 text-xs font-bold rounded-lg border border-slate-200 bg-stone-50 text-slate-600 hover:bg-slate-100 transition-all">Non-Veg</button>
+            </div>
+          </div>
+
+          <!-- Compute CTA -->
+          <button onclick="computeDietProtocol(true)" class="w-full py-3.5 rounded-xl bg-gradient-to-r from-brand-700 via-brand-800 to-royal-950 text-white font-bold text-xs uppercase tracking-widest hover:from-brand-600 hover:to-brand-900 transition-all shadow-md shadow-brand-900/20 flex items-center justify-center gap-2">
+            <i class="fa-solid fa-wand-magic-sparkles text-gold-400"></i>
+            Recalculate Dynamic Protocol
+          </button>
+        </div>
+
+        <!-- Right: Animated Visual Results & Nutrition Blueprint -->
+        <div class="lg:col-span-7 space-y-6">
+          
+          <!-- Animated Dashboard Metrics Cards -->
+          <div class="bg-white rounded-2xl p-6 sm:p-8 shadow-luxury border border-brand-100">
+            <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between pb-6 border-b border-slate-100 gap-4">
+              <div>
+                <span class="text-[11px] font-bold uppercase tracking-widest text-brand-700 bg-brand-50 px-2.5 py-1 rounded-md" id="result-disease-badge">Condition: Type 2 Diabetes</span>
+                <h3 class="font-luxury text-2xl font-bold text-slate-900 mt-2">Target Curative Nutrition Matrix</h3>
+              </div>
+              <button onclick="printDietSheet()" class="px-4 py-2 rounded-lg text-xs font-semibold bg-slate-900 hover:bg-slate-800 text-white transition-all flex items-center gap-1.5 shadow-sm">
+                <i class="fa-solid fa-print"></i> Print Clinical Diet Plan
+              </button>
+            </div>
+
+            <!-- Animated Calories Circular & Split Gauges -->
+            <div class="grid sm:grid-cols-3 gap-6 my-6 items-center">
+              
+              <!-- Target Calories Circle Gauge -->
+              <div class="sm:col-span-1 flex flex-col items-center justify-center p-4 rounded-xl bg-stone-50 border border-slate-100 relative">
+                <div class="relative w-32 h-32 flex items-center justify-center">
+                  <!-- SVG Circular Progress Meter -->
+                  <svg class="w-full h-full transform -rotate-90" viewBox="0 0 100 100">
+                    <circle cx="50" cy="50" r="42" stroke="currentColor" stroke-width="8" class="text-slate-200" fill="transparent"/>
+                    <circle id="calorie-progress-circle" cx="50" cy="50" r="42" stroke="currentColor" stroke-width="8" class="text-brand-600 transition-all duration-1000 ease-out" stroke-dasharray="264" stroke-dashoffset="65" stroke-linecap="round" fill="transparent"/>
+                  </svg>
+                  <div class="absolute inset-0 flex flex-col items-center justify-center text-center">
+                    <span id="target-calories-val" class="text-2xl font-black text-slate-900 font-mono">1,780</span>
+                    <span class="text-[10px] uppercase font-bold text-slate-500 tracking-wider">kcal / day</span>
+                  </div>
+                </div>
+                <p class="text-[11px] font-semibold text-slate-600 mt-2 text-center">Therapeutic Target</p>
+                <span class="text-[10px] text-emerald-600 font-medium" id="bmr-display">BMR: 1,480 kcal</span>
+              </div>
+
+              <!-- Macronutrient Animated Sliders -->
+              <div class="sm:col-span-2 space-y-4">
+                
+                <!-- Carbohydrates -->
+                <div>
+                  <div class="flex justify-between text-xs font-bold mb-1">
+                    <span class="text-slate-700 flex items-center gap-1.5">
+                      <span class="w-2.5 h-2.5 rounded-full bg-amber-500"></span> Complex Low-GI Carbs
+                    </span>
+                    <span id="macro-carb-val" class="font-mono text-slate-900 font-extrabold">35% (155g)</span>
+                  </div>
+                  <div class="w-full h-2.5 bg-slate-100 rounded-full overflow-hidden">
+                    <div id="bar-carb" class="h-full bg-amber-500 rounded-full transition-all duration-1000 ease-out" style="width: 35%"></div>
+                  </div>
+                </div>
+
+                <!-- Protein -->
+                <div>
+                  <div class="flex justify-between text-xs font-bold mb-1">
+                    <span class="text-slate-700 flex items-center gap-1.5">
+                      <span class="w-2.5 h-2.5 rounded-full bg-teal-600"></span> Clean Protein (Tissue Repair)
+                    </span>
+                    <span id="macro-protein-val" class="font-mono text-slate-900 font-extrabold">30% (133g)</span>
+                  </div>
+                  <div class="w-full h-2.5 bg-slate-100 rounded-full overflow-hidden">
+                    <div id="bar-protein" class="h-full bg-teal-600 rounded-full transition-all duration-1000 ease-out" style="width: 30%"></div>
+                  </div>
+                </div>
+
+                <!-- Healthy Fats -->
+                <div>
+                  <div class="flex justify-between text-xs font-bold mb-1">
+                    <span class="text-slate-700 flex items-center gap-1.5">
+                      <span class="w-2.5 h-2.5 rounded-full bg-emerald-600"></span> Healthy Omega & MUFA Fats
+                    </span>
+                    <span id="macro-fat-val" class="font-mono text-slate-900 font-extrabold">35% (69g)</span>
+                  </div>
+                  <div class="w-full h-2.5 bg-slate-100 rounded-full overflow-hidden">
+                    <div id="bar-fat" class="h-full bg-emerald-600 rounded-full transition-all duration-1000 ease-out" style="width: 35%"></div>
+                  </div>
+                </div>
+
+                <!-- Hydration & Water Target -->
+                <div class="pt-2 flex items-center justify-between text-xs bg-brand-50/60 p-3 rounded-xl border border-brand-100">
+                  <div class="flex items-center gap-2">
+                    <i class="fa-solid fa-droplet text-blue-500 text-base"></i>
+                    <div>
+                      <p class="font-bold text-slate-800">Hydration Target</p>
+                      <p class="text-[10px] text-slate-500">Lukewarm copper-vessel water</p>
+                    </div>
+                  </div>
+                  <span id="water-intake-val" class="font-mono text-blue-700 font-black text-sm">3.1 Liters / 13 Glasses</span>
+                </div>
+
+              </div>
+            </div>
+
+            <!-- Homeopathic Antidote & Compatibility Warning Callout -->
+            <div class="p-4 rounded-xl bg-amber-50/80 border border-amber-200 text-xs text-amber-900 flex items-start gap-3">
+              <i class="fa-solid fa-triangle-exclamation text-amber-600 text-lg mt-0.5 shrink-0"></i>
+              <div>
+                <p class="font-bold uppercase tracking-wider text-[11px] text-amber-950">Homeopathic Compatibility Protocol (§ Organon 260)</p>
+                <p class="mt-0.5 text-amber-800/90 leading-relaxed" id="homeo-compatibility-text">
+                  Strictly avoid raw camphor, heavy peppermint gums, eucalyptus lozenges, and unchecked espresso 30 minutes before and after your constitutional dose to avoid medicinal antidoting.
+                </p>
+              </div>
+            </div>
+
+          </div>
+
+          <!-- Curative Food Blueprint: Champions vs Eliminate -->
+          <div class="grid sm:grid-cols-2 gap-4">
+            
+            <!-- Foods to Champion -->
+            <div class="bg-white rounded-2xl p-5 shadow-sm border border-emerald-100">
+              <div class="flex items-center gap-2 font-bold text-emerald-800 text-xs uppercase tracking-wider pb-3 border-b border-emerald-50">
+                <i class="fa-solid fa-circle-check text-emerald-600 text-base"></i>
+                Foods to Champion (Healing Matrix)
+              </div>
+              <ul id="foods-champion-list" class="mt-3 space-y-2 text-xs text-slate-700">
+                <!-- Dynamically populated -->
+              </ul>
+            </div>
+
+            <!-- Foods to Strictly Eliminate -->
+            <div class="bg-white rounded-2xl p-5 shadow-sm border border-rose-100">
+              <div class="flex items-center gap-2 font-bold text-rose-800 text-xs uppercase tracking-wider pb-3 border-b border-rose-50">
+                <i class="fa-solid fa-circle-xmark text-rose-600 text-base"></i>
+                Foods to Strictly Eliminate
+              </div>
+              <ul id="foods-eliminate-list" class="mt-3 space-y-2 text-xs text-slate-700">
+                <!-- Dynamically populated -->
+              </ul>
+            </div>
+
+          </div>
+
+          <!-- 5-Meal Day Schedule -->
+          <div class="bg-white rounded-2xl p-6 shadow-luxury border border-brand-100">
+            <h4 class="font-bold text-slate-900 text-sm uppercase tracking-wider flex items-center gap-2 pb-4 border-b border-slate-100">
+              <i class="fa-regular fa-clock text-brand-600"></i>
+              Suggested 5-Phase Daily Curative Meal Blueprint
+            </h4>
+            <div id="meal-schedule-container" class="mt-4 grid sm:grid-cols-5 gap-3">
+              <!-- Dynamically populated meal cards -->
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ==================== INTERACTIVE OP BOOKING TOOL (CORE REQUIRED FEATURE) ==================== -->
+  <section id="op-booking" class="py-20 bg-white relative">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <!-- Section Title -->
+      <div class="text-center max-w-3xl mx-auto space-y-3">
+        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-brand-100 text-brand-800 text-xs font-bold uppercase tracking-wider">
+          <i class="fa-solid fa-hospital-user text-brand-600"></i>
+          Fast-Track Outpatient Desk
+        </div>
+        <h2 class="font-luxury text-3xl sm:text-4xl font-bold text-slate-900">
+          Interactive <span class="emerald-gradient-text">OP Appointment & Token Generator</span>
+        </h2>
+        <p class="text-slate-600 text-sm sm:text-base">
+          Reserve your verified Outpatient consultation slot with our senior MD Homeopaths. Instant digital OP token pass generated with zero queue waiting.
+        </p>
+      </div>
+
+      <!-- Booking Interactive Wizard Container -->
+      <div class="mt-12 max-w-4xl mx-auto bg-stone-50 rounded-3xl p-6 sm:p-10 shadow-2xl border border-brand-100 relative">
+        
+        <!-- Step Progress Tracker -->
+        <div class="flex items-center justify-between max-w-xl mx-auto mb-10 relative">
+          <div class="absolute left-0 top-1/2 -translate-y-1/2 h-1 bg-slate-200 w-full -z-0"></div>
+          <div id="booking-step-line" class="absolute left-0 top-1/2 -translate-y-1/2 h-1 bg-brand-600 transition-all duration-500 w-0 -z-0"></div>
+
+          <!-- Step 1 -->
+          <div class="relative z-10 flex flex-col items-center">
+            <div id="step-node-1" class="w-10 h-10 rounded-full bg-brand-700 text-white flex items-center justify-center font-bold text-sm shadow-md ring-4 ring-white">1</div>
+            <span class="text-[11px] font-bold text-brand-900 mt-2">Clinic & Doctor</span>
+          </div>
+
+          <!-- Step 2 -->
+          <div class="relative z-10 flex flex-col items-center">
+            <div id="step-node-2" class="w-10 h-10 rounded-full bg-slate-200 text-slate-600 flex items-center justify-center font-bold text-sm shadow-md ring-4 ring-white">2</div>
+            <span class="text-[11px] font-bold text-slate-500 mt-2">Date & Slot</span>
+          </div>
+
+          <!-- Step 3 -->
+          <div class="relative z-10 flex flex-col items-center">
+            <div id="step-node-3" class="w-10 h-10 rounded-full bg-slate-200 text-slate-600 flex items-center justify-center font-bold text-sm shadow-md ring-4 ring-white">3</div>
+            <span class="text-[11px] font-bold text-slate-500 mt-2">Patient Details</span>
+          </div>
+
+          <!-- Step 4 -->
+          <div class="relative z-10 flex flex-col items-center">
+            <div id="step-node-4" class="w-10 h-10 rounded-full bg-slate-200 text-slate-600 flex items-center justify-center font-bold text-sm shadow-md ring-4 ring-white">4</div>
+            <span class="text-[11px] font-bold text-slate-500 mt-2">Digital Pass</span>
+          </div>
+        </div>
+
+        <!-- FORM PANELS -->
+        <form id="op-booking-form" onsubmit="event.preventDefault(); nextBookingStep();">
+          
+          <!-- STEP 1: Department & Doctor Selection -->
+          <div id="step-pane-1" class="space-y-6">
+            <div class="text-center sm:text-left">
+              <h3 class="text-lg font-bold text-slate-900">Step 1: Choose Consultation Modality & Doctor</h3>
+              <p class="text-xs text-slate-500 mt-0.5">Select how and with whom you wish to consult.</p>
+            </div>
+
+            <!-- Modality Radio Cards -->
+            <div class="grid sm:grid-cols-3 gap-3">
+              <label class="cursor-pointer">
+                <input type="radio" name="consult-mode" value="In-Person Hospital OPD" checked class="peer sr-only">
+                <div class="p-4 rounded-xl border border-slate-200 bg-white peer-checked:border-brand-600 peer-checked:ring-2 peer-checked:ring-brand-500 peer-checked:bg-brand-50/50 transition-all text-center">
+                  <i class="fa-solid fa-hospital text-2xl text-brand-700 mb-2"></i>
+                  <div class="font-bold text-xs text-slate-900">Hospital In-Person</div>
+                  <div class="text-[10px] text-slate-500 mt-0.5">Physical consultation at campus</div>
+                </div>
+              </label>
+
+              <label class="cursor-pointer">
+                <input type="radio" name="consult-mode" value="Ultra-HD Tele-Consultation" class="peer sr-only">
+                <div class="p-4 rounded-xl border border-slate-200 bg-white peer-checked:border-brand-600 peer-checked:ring-2 peer-checked:ring-brand-500 peer-checked:bg-brand-50/50 transition-all text-center">
+                  <i class="fa-solid fa-video text-2xl text-teal-600 mb-2"></i>
+                  <div class="font-bold text-xs text-slate-900">Tele-Health Video</div>
+                  <div class="text-[10px] text-slate-500 mt-0.5">Secure global digital OPD</div>
+                </div>
+              </label>
+
+              <label class="cursor-pointer">
+                <input type="radio" name="consult-mode" value="Geriatric Home Care Visit" class="peer sr-only">
+                <div class="p-4 rounded-xl border border-slate-200 bg-white peer-checked:border-brand-600 peer-checked:ring-2 peer-checked:ring-brand-500 peer-checked:bg-brand-50/50 transition-all text-center">
+                  <i class="fa-solid fa-house-medical text-2xl text-gold-600 mb-2"></i>
+                  <div class="font-bold text-xs text-slate-900">Home Care Visit</div>
+                  <div class="text-[10px] text-slate-500 mt-0.5">For elderly/bedridden patients</div>
+                </div>
+              </label>
+            </div>
+
+            <!-- Department Select -->
+            <div>
+              <label class="block text-xs font-bold uppercase tracking-wider text-slate-700 mb-2">Select Specialty Department</label>
+              <select id="op-dept-select" onchange="filterDoctorsByDept()" class="w-full bg-white border border-slate-200 rounded-xl px-4 py-3 text-sm font-semibold text-slate-800 focus:outline-none focus:ring-2 focus:ring-brand-500">
+                <option value="all">All Super-Specialty Departments</option>
+                <option value="constitutional" selected>Classical Constitutional Homeopathy</option>
+                <option value="dermatology">Autoimmune Dermatology & Psoriasis Unit</option>
+                <option value="pediatrics">Pediatric & Neurodevelopmental Care</option>
+                <option value="endocrinology">Endocrine & Thyroid Metabolic Clinic</option>
+                <option value="rheumatology">Rheumatology & Joint Preservation</option>
+                <option value="respiratory">Respiratory & Chronic Allergy Institute</option>
+              </select>
+            </div>
+
+            <!-- Doctor Selector Radio Cards -->
+            <div>
+              <label class="block text-xs font-bold uppercase tracking-wider text-slate-700 mb-2">Select Senior Consultant</label>
+              <div id="doctor-selection-grid" class="grid sm:grid-cols-2 gap-3">
+                <!-- Dynamically populated doctor cards -->
+              </div>
+            </div>
+
+            <div class="flex justify-end pt-4">
+              <button type="button" onclick="nextBookingStep(2)" class="px-7 py-3 rounded-xl bg-brand-700 hover:bg-brand-800 text-white font-bold text-xs uppercase tracking-wider transition-all flex items-center gap-2">
+                Continue to Slot Selection &rarr;
+              </button>
+            </div>
+          </div>
+
+          <!-- STEP 2: Date & Slot Selection -->
+          <div id="step-pane-2" class="hidden space-y-6">
+            <div class="text-center sm:text-left">
+              <h3 class="text-lg font-bold text-slate-900">Step 2: Choose Appointment Date & Timing Slot</h3>
+              <p class="text-xs text-slate-500 mt-0.5">Select a convenient available OPD window.</p>
+            </div>
+
+            <!-- Date Picker -->
+            <div class="grid sm:grid-cols-2 gap-4">
+              <div>
+                <label class="block text-xs font-bold uppercase tracking-wider text-slate-700 mb-2">Consultation Date</label>
+                <input type="date" id="op-date-input" onchange="renderTimeSlots()" class="w-full bg-white border border-slate-200 rounded-xl px-4 py-3 text-sm font-semibold text-slate-800 focus:outline-none focus:ring-2 focus:ring-brand-500">
+              </div>
+              <div>
+                <label class="block text-xs font-bold uppercase tracking-wider text-slate-700 mb-2">OPD Session Window</label>
+                <div class="grid grid-cols-3 gap-2">
+                  <button type="button" onclick="filterSlotWindow('morning')" id="btn-win-morning" class="py-3 text-xs font-bold rounded-lg border border-brand-500 bg-brand-50 text-brand-800 transition-all">Morning</button>
+                  <button type="button" onclick="filterSlotWindow('afternoon')" id="btn-win-afternoon" class="py-3 text-xs font-bold rounded-lg border border-slate-200 bg-white text-slate-600 hover:bg-slate-50 transition-all">Afternoon</button>
+                  <button type="button" onclick="filterSlotWindow('evening')" id="btn-win-evening" class="py-3 text-xs font-bold rounded-lg border border-slate-200 bg-white text-slate-600 hover:bg-slate-50 transition-all">Evening</button>
+                </div>
+              </div>
+            </div>
+
+            <!-- Live Time Slot Buttons -->
+            <div>
+              <label class="block text-xs font-bold uppercase tracking-wider text-slate-700 mb-2">Select Live Time Slot (15-min consultation window)</label>
+              <div id="slots-grid" class="grid grid-cols-3 sm:grid-cols-4 gap-2.5">
+                <!-- Dynamically rendered slots -->
+              </div>
+            </div>
+
+            <div class="flex justify-between pt-4">
+              <button type="button" onclick="nextBookingStep(1)" class="px-6 py-3 rounded-xl border border-slate-300 text-slate-700 font-bold text-xs uppercase tracking-wider hover:bg-slate-100 transition-all">
+                &larr; Back
+              </button>
+              <button type="button" onclick="nextBookingStep(3)" class="px-7 py-3 rounded-xl bg-brand-700 hover:bg-brand-800 text-white font-bold text-xs uppercase tracking-wider transition-all flex items-center gap-2">
+                Continue to Patient Info &rarr;
+              </button>
+            </div>
+          </div>
+
+          <!-- STEP 3: Patient Information -->
+          <div id="step-pane-3" class="hidden space-y-6">
+            <div class="text-center sm:text-left">
+              <h3 class="text-lg font-bold text-slate-900">Step 3: Patient Information & Case Overview</h3>
+              <p class="text-xs text-slate-500 mt-0.5">Provide essential health history for your homeopathic physician.</p>
+            </div>
+
+            <div class="grid sm:grid-cols-2 gap-4">
+              <div>
+                <label class="block text-xs font-bold uppercase tracking-wider text-slate-700 mb-2">Patient Full Name <span class="text-red-500">*</span></label>
+                <input type="text" id="patient-name" required placeholder="e.g. Eleanor Vance" class="w-full bg-white border border-slate-200 rounded-xl px-4 py-3 text-sm text-slate-800 focus:outline-none focus:ring-2 focus:ring-brand-500">
+              </div>
+
+              <div>
+                <label class="block text-xs font-bold uppercase tracking-wider text-slate-700 mb-2">Contact Mobile / WhatsApp <span class="text-red-500">*</span></label>
+                <input type="tel" id="patient-phone" required placeholder="+91 98765 43210" class="w-full bg-white border border-slate-200 rounded-xl px-4 py-3 text-sm text-slate-800 focus:outline-none focus:ring-2 focus:ring-brand-500">
+              </div>
+            </div>
+
+            <div class="grid sm:grid-cols-3 gap-4">
+              <div>
+                <label class="block text-xs font-bold uppercase tracking-wider text-slate-700 mb-2">Age</label>
+                <input type="number" id="patient-age" value="34" min="1" max="115" class="w-full bg-white border border-slate-200 rounded-xl px-4 py-3 text-sm text-slate-800 focus:outline-none focus:ring-2 focus:ring-brand-500">
+              </div>
+              <div>
+                <label class="block text-xs font-bold uppercase tracking-wider text-slate-700 mb-2">Gender</label>
+                <select id="patient-gender" class="w-full bg-white border border-slate-200 rounded-xl px-4 py-3 text-sm text-slate-800 focus:outline-none focus:ring-2 focus:ring-brand-500">
+                  <option value="Female">Female</option>
+                  <option value="Male">Male</option>
+                  <option value="Other">Other</option>
+                </select>
+              </div>
+              <div>
+                <label class="block text-xs font-bold uppercase tracking-wider text-slate-700 mb-2">Consultation Category</label>
+                <select id="patient-category" class="w-full bg-white border border-slate-200 rounded-xl px-4 py-3 text-sm text-slate-800 focus:outline-none focus:ring-2 focus:ring-brand-500">
+                  <option value="New Case Taking (1st Visit)">New Case Taking (1st Visit)</option>
+                  <option value="Follow-up Case Review">Follow-up Case Review</option>
+                  <option value="Second Opinion / Chronic Refractory">Second Opinion</option>
+                </select>
+              </div>
+            </div>
+
+            <div>
+              <label class="block text-xs font-bold uppercase tracking-wider text-slate-700 mb-2">Primary Symptoms / Chief Complaints</label>
+              <textarea id="patient-symptoms" rows="3" placeholder="Briefly describe your condition (e.g. Chronic psoriasis on elbows for 4 years, aggravated by winter and stress; sleeplessness)..." class="w-full bg-white border border-slate-200 rounded-xl px-4 py-3 text-sm text-slate-800 focus:outline-none focus:ring-2 focus:ring-brand-500"></textarea>
+            </div>
+
+            <div class="flex justify-between pt-4">
+              <button type="button" onclick="nextBookingStep(2)" class="px-6 py-3 rounded-xl border border-slate-300 text-slate-700 font-bold text-xs uppercase tracking-wider hover:bg-slate-100 transition-all">
+                &larr; Back
+              </button>
+              <button type="button" onclick="finalizeBooking()" class="px-8 py-3.5 rounded-xl bg-gradient-to-r from-emerald-600 via-brand-700 to-royal-950 hover:from-emerald-500 hover:to-brand-800 text-white font-bold text-xs uppercase tracking-widest shadow-lg shadow-brand-900/20 transition-all flex items-center gap-2">
+                <i class="fa-solid fa-check-circle text-gold-400"></i>
+                Confirm & Issue Digital OP Token
+              </button>
+            </div>
+          </div>
+
+          <!-- STEP 4: Digital Pass & Token Confirmation -->
+          <div id="step-pane-4" class="hidden space-y-6">
+            <div id="printable-op-pass" class="bg-white rounded-2xl p-6 sm:p-8 border-2 border-dashed border-brand-500/40 shadow-xl relative overflow-hidden">
+              
+              <!-- Watermark Stamp -->
+              <div class="absolute -right-8 -bottom-8 w-44 h-44 rounded-full border-4 border-emerald-100/60 pointer-events-none flex items-center justify-center rotate-12">
+                <span class="font-royal text-emerald-900/10 font-black text-2xl uppercase">NABH Verified</span>
+              </div>
+
+              <!-- Pass Header -->
+              <div class="flex flex-col sm:flex-row sm:items-center justify-between pb-6 border-b border-slate-100 gap-4">
+                <div class="flex items-center gap-3">
+                  <div class="w-12 h-12 rounded-xl bg-brand-800 text-gold-400 flex items-center justify-center text-xl shadow-md">
+                    <i class="fa-solid fa-notes-medical"></i>
+                  </div>
+                  <div>
+                    <h4 class="font-royal font-bold text-slate-900 text-lg">HAHNEMANN ROYAL HOSPITAL</h4>
+                    <p class="text-[10px] text-emerald-700 font-bold uppercase tracking-wider">Official Outpatient (OP) Consultation Pass</p>
+                  </div>
+                </div>
+
+                <div class="text-left sm:text-right">
+                  <span class="text-[10px] uppercase font-bold text-slate-400 tracking-wider">Issued Token No.</span>
+                  <div id="pass-token-no" class="font-mono text-3xl font-black text-brand-700 tracking-tight">OP-8924</div>
+                </div>
+              </div>
+
+              <!-- Pass Body Details -->
+              <div class="grid sm:grid-cols-2 gap-6 my-6 text-xs">
+                <div class="space-y-2">
+                  <div class="flex justify-between border-b border-slate-50 pb-1">
+                    <span class="text-slate-500">Patient Name:</span>
+                    <span id="pass-patient-name" class="font-bold text-slate-900">Eleanor Vance</span>
+                  </div>
+                  <div class="flex justify-between border-b border-slate-50 pb-1">
+                    <span class="text-slate-500">Age / Gender:</span>
+                    <span id="pass-patient-details" class="font-semibold text-slate-800">34 Yrs / Female</span>
+                  </div>
+                  <div class="flex justify-between border-b border-slate-50 pb-1">
+                    <span class="text-slate-500">Contact No:</span>
+                    <span id="pass-patient-phone" class="font-mono text-slate-800">+91 98765 43210</span>
+                  </div>
+                  <div class="flex justify-between border-b border-slate-50 pb-1">
+                    <span class="text-slate-500">Category:</span>
+                    <span id="pass-category" class="font-semibold text-brand-700">New Constitutional Case</span>
+                  </div>
+                </div>
+
+                <div class="space-y-2">
+                  <div class="flex justify-between border-b border-slate-50 pb-1">
+                    <span class="text-slate-500">Physician:</span>
+                    <span id="pass-doctor-name" class="font-bold text-slate-900">Dr. Samuel H. Rao, MD (Hom)</span>
+                  </div>
+                  <div class="flex justify-between border-b border-slate-50 pb-1">
+                    <span class="text-slate-500">Department:</span>
+                    <span id="pass-dept" class="font-semibold text-slate-800">Constitutional Medicine</span>
+                  </div>
+                  <div class="flex justify-between border-b border-slate-50 pb-1">
+                    <span class="text-slate-500">Date & Slot:</span>
+                    <span id="pass-slot" class="font-bold text-emerald-700 font-mono">18 Nov 2026 | 10:30 AM</span>
+                  </div>
+                  <div class="flex justify-between border-b border-slate-50 pb-1">
+                    <span class="text-slate-500">OPD Chamber:</span>
+                    <span id="pass-chamber" class="font-bold text-slate-900">Chamber 204 (Floor 2)</span>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Pass Footer Bar -->
+              <div class="bg-stone-50 p-4 rounded-xl border border-slate-100 flex flex-col sm:flex-row items-center justify-between gap-3 text-[11px]">
+                <div class="flex items-center gap-2 text-slate-600">
+                  <i class="fa-solid fa-qrcode text-2xl text-slate-800"></i>
+                  <div>
+                    <p class="font-bold text-slate-900">Digital QR Verification Active</p>
+                    <p class="text-[10px] text-slate-500">Show this slip at OPD reception for fast-track entry.</p>
+                  </div>
+                </div>
+                <div class="text-emerald-700 font-semibold flex items-center gap-1">
+                  <i class="fa-solid fa-shield-check"></i> Registration Fee: ₹500 (Paid at Counter)
+                </div>
+              </div>
+
+            </div>
+
+            <!-- Pass Action Buttons -->
+            <div class="flex flex-wrap items-center justify-center gap-3 pt-4">
+              <button onclick="printOPPass()" class="px-5 py-2.5 rounded-xl bg-slate-900 hover:bg-slate-800 text-white font-bold text-xs uppercase tracking-wider transition-all flex items-center gap-2">
+                <i class="fa-solid fa-print"></i> Print Official OP Slip
+              </button>
+              <button onclick="downloadCalendarInvite()" class="px-5 py-2.5 rounded-xl bg-brand-100 hover:bg-brand-200 text-brand-900 font-bold text-xs uppercase tracking-wider transition-all flex items-center gap-2">
+                <i class="fa-solid fa-calendar-plus"></i> Add to Calendar (.ics)
+              </button>
+              <button onclick="resetBookingForm()" class="px-5 py-2.5 rounded-xl border border-slate-200 hover:bg-slate-100 text-slate-700 font-bold text-xs uppercase tracking-wider transition-all">
+                Book Another Appointment
+              </button>
+            </div>
+          </div>
+
+        </form>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ==================== SPECIALTIES & CLINICAL DEPARTMENTS ==================== -->
+  <section id="specialties" class="py-20 bg-stone-50 border-t border-brand-100">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <div class="text-center max-w-3xl mx-auto space-y-3">
+        <span class="text-xs font-bold uppercase tracking-widest text-brand-700 bg-brand-100 px-3 py-1 rounded-full">Centres of Clinical Excellence</span>
+        <h2 class="font-luxury text-3xl sm:text-4xl font-bold text-slate-900">
+          Super-Specialty <span class="emerald-gradient-text">Homeopathic Departments</span>
+        </h2>
+        <p class="text-slate-600 text-sm sm:text-base">
+          Our specialized units apply constitutional repertorization combined with state-of-the-art pathology monitoring to cure deep-seated chronic diseases.
+        </p>
+      </div>
+
+      <div class="mt-14 grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        
+        <!-- Dept 1 -->
+        <div class="bg-white rounded-2xl p-6 shadow-sm hover:shadow-luxury border border-slate-100 transition-all group hover:-translate-y-1">
+          <div class="w-14 h-14 rounded-xl bg-brand-50 text-brand-700 flex items-center justify-center text-2xl group-hover:bg-brand-700 group-hover:text-white transition-all">
+            <i class="fa-solid fa-dna"></i>
+          </div>
+          <h3 class="font-bold text-slate-900 text-base mt-4">Classical Constitutional Clinic</h3>
+          <p class="text-xs text-slate-500 mt-2 leading-relaxed">
+            In-depth psycho-somatic case taking (§ 83–104) analyzing genetic predispositions, miasms, and vital constitution for long-term health restoration.
+          </p>
+          <div class="mt-4 pt-3 border-t border-slate-100 flex items-center justify-between text-[11px] font-semibold text-brand-700">
+            <span>Room 201–204</span>
+            <span class="group-hover:translate-x-1 transition-transform">&rarr;</span>
+          </div>
+        </div>
+
+        <!-- Dept 2 -->
+        <div class="bg-white rounded-2xl p-6 shadow-sm hover:shadow-luxury border border-slate-100 transition-all group hover:-translate-y-1">
+          <div class="w-14 h-14 rounded-xl bg-amber-50 text-amber-700 flex items-center justify-center text-2xl group-hover:bg-amber-600 group-hover:text-white transition-all">
+            <i class="fa-solid fa-hand-dots"></i>
+          </div>
+          <h3 class="font-bold text-slate-900 text-base mt-4">Autoimmune Dermatology</h3>
+          <p class="text-xs text-slate-500 mt-2 leading-relaxed">
+            Non-steroid protocols for refractory Psoriasis vulgaris, Atopic Eczema, Vitiligo, Lichen Planus, and severe chronic urticaria.
+          </p>
+          <div class="mt-4 pt-3 border-t border-slate-100 flex items-center justify-between text-[11px] font-semibold text-amber-700">
+            <span>Room 305–307</span>
+            <span class="group-hover:translate-x-1 transition-transform">&rarr;</span>
+          </div>
+        </div>
+
+        <!-- Dept 3 -->
+        <div class="bg-white rounded-2xl p-6 shadow-sm hover:shadow-luxury border border-slate-100 transition-all group hover:-translate-y-1">
+          <div class="w-14 h-14 rounded-xl bg-teal-50 text-teal-700 flex items-center justify-center text-2xl group-hover:bg-teal-700 group-hover:text-white transition-all">
+            <i class="fa-solid fa-child-reaching"></i>
+          </div>
+          <h3 class="font-bold text-slate-900 text-base mt-4">Pediatric & Neuro-Developmental</h3>
+          <p class="text-xs text-slate-500 mt-2 leading-relaxed">
+            Gentle constitutional therapy for ADHD, Autism spectrum support, recurrent tonsillitis, childhood asthma, and developmental milestones.
+          </p>
+          <div class="mt-4 pt-3 border-t border-slate-100 flex items-center justify-between text-[11px] font-semibold text-teal-700">
+            <span>Room 112–115</span>
+            <span class="group-hover:translate-x-1 transition-transform">&rarr;</span>
+          </div>
+        </div>
+
+        <!-- Dept 4 -->
+        <div class="bg-white rounded-2xl p-6 shadow-sm hover:shadow-luxury border border-slate-100 transition-all group hover:-translate-y-1">
+          <div class="w-14 h-14 rounded-xl bg-emerald-50 text-emerald-700 flex items-center justify-center text-2xl group-hover:bg-emerald-700 group-hover:text-white transition-all">
+            <i class="fa-solid fa-bone"></i>
+          </div>
+          <h3 class="font-bold text-slate-900 text-base mt-4">Rheumatology & Joint Care</h3>
+          <p class="text-xs text-slate-500 mt-2 leading-relaxed">
+            Targeted reversal of Rheumatoid Arthritis inflammation (RF & Anti-CCP), Ankylosing Spondylitis, and Osteoarthritis cartilage nourishment.
+          </p>
+          <div class="mt-4 pt-3 border-t border-slate-100 flex items-center justify-between text-[11px] font-semibold text-emerald-700">
+            <span>Room 218–220</span>
+            <span class="group-hover:translate-x-1 transition-transform">&rarr;</span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== EDUCATIONAL MATERIA MEDICA & POTENCY EXPLORER ==================== -->
+  <section id="materia-medica" class="py-20 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <div class="text-center max-w-3xl mx-auto space-y-3">
+        <span class="text-xs font-bold uppercase tracking-widest text-gold-700 bg-gold-100 px-3 py-1 rounded-full">Academic Research & Heritage</span>
+        <h2 class="font-luxury text-3xl sm:text-4xl font-bold text-slate-900">
+          Interactive <span class="gold-gradient-text">Materia Medica & Remedy Explorer</span>
+        </h2>
+        <p class="text-slate-600 text-sm sm:text-base">
+          For educational research: examine classic polychrest remedies, their source pharmacognosy, key modalities, and constitutional indications.
+        </p>
+      </div>
+
+      <!-- Remedy Search & Filter Bar -->
+      <div class="mt-10 max-w-xl mx-auto flex gap-3">
+        <div class="relative flex-1">
+          <input type="text" id="remedy-search" oninput="filterRemedies(this.value)" placeholder="Search remedy (e.g. Arnica, Lycopodium, Nux Vomica)..." class="w-full bg-stone-50 border border-slate-200 rounded-xl pl-10 pr-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-brand-500">
+          <i class="fa-solid fa-magnifying-glass absolute left-3.5 top-1/2 -translate-y-1/2 text-slate-400 text-xs"></i>
+        </div>
+      </div>
+
+      <!-- Remedy Cards Grid -->
+      <div id="remedies-grid" class="mt-10 grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        <!-- Dynamically rendered remedy cards -->
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ==================== SENIOR MEDICAL CONSULTANTS ==================== -->
+  <section id="doctors" class="py-20 bg-stone-50 border-t border-brand-100">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <div class="text-center max-w-3xl mx-auto space-y-3">
+        <span class="text-xs font-bold uppercase tracking-widest text-brand-700 bg-brand-100 px-3 py-1 rounded-full">Faculty of Medicine</span>
+        <h2 class="font-luxury text-3xl sm:text-4xl font-bold text-slate-900">
+          Distinguished <span class="emerald-gradient-text">Senior Medical Consultants</span>
+        </h2>
+        <p class="text-slate-600 text-sm sm:text-base">
+          Our council of MD Homeopaths and Gold Medalists bring over three decades of clinical mastery and research publications.
+        </p>
+      </div>
+
+      <div class="mt-12 grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
+        
+        <!-- Doctor 1 -->
+        <div class="bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-luxury border border-slate-100 transition-all">
+          <div class="h-48 bg-gradient-to-tr from-brand-900 to-royal-950 flex items-center justify-center text-white relative">
+            <i class="fa-solid fa-user-doctor text-6xl text-brand-300/40"></i>
+            <span class="absolute top-4 right-4 bg-gold-500 text-slate-950 text-[10px] font-extrabold uppercase px-2.5 py-0.5 rounded-full">Chief of Staff</span>
+          </div>
+          <div class="p-6">
+            <h3 class="font-bold text-slate-900 text-lg">Dr. Samuel H. Rao, MD (Hom)</h3>
+            <p class="text-xs text-brand-700 font-semibold mt-0.5">Professor of Classical Constitutional Medicine</p>
+            <p class="text-xs text-slate-500 mt-2 leading-relaxed">
+              32+ years experience. Ex-President of Homeopathic Research Foundation. Specializes in multi-system chronic autoimmune disease.
+            </p>
+            <div class="mt-4 pt-4 border-t border-slate-100 flex items-center justify-between">
+              <div>
+                <span class="text-[10px] uppercase font-bold text-slate-400">OPD Timings</span>
+                <p class="text-xs font-semibold text-slate-800">Mon - Fri | 09:00 - 14:00</p>
+              </div>
+              <button onclick="bookWithDoctor('Dr. Samuel H. Rao, MD (Hom)')" class="px-3.5 py-1.5 rounded-lg bg-brand-700 hover:bg-brand-800 text-white text-xs font-bold transition-all">
+                Book Slot
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Doctor 2 -->
+        <div class="bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-luxury border border-slate-100 transition-all">
+          <div class="h-48 bg-gradient-to-tr from-teal-900 to-brand-950 flex items-center justify-center text-white relative">
+            <i class="fa-solid fa-user-doctor text-6xl text-teal-300/40"></i>
+            <span class="absolute top-4 right-4 bg-brand-400 text-slate-950 text-[10px] font-extrabold uppercase px-2.5 py-0.5 rounded-full">Dermatology Head</span>
+          </div>
+          <div class="p-6">
+            <h3 class="font-bold text-slate-900 text-lg">Dr. Aris Thorne, MD (Hom), F.C.H</h3>
+            <p class="text-xs text-brand-700 font-semibold mt-0.5">Head of Autoimmune & Psoriasis Unit</p>
+            <p class="text-xs text-slate-500 mt-2 leading-relaxed">
+              24+ years clinical mastery. Pioneer of non-steroidal biological remission in severe psoriasis, atopic eczema, and alopecia areata.
+            </p>
+            <div class="mt-4 pt-4 border-t border-slate-100 flex items-center justify-between">
+              <div>
+                <span class="text-[10px] uppercase font-bold text-slate-400">OPD Timings</span>
+                <p class="text-xs font-semibold text-slate-800">Tue - Sat | 10:00 - 16:00</p>
+              </div>
+              <button onclick="bookWithDoctor('Dr. Aris Thorne, MD (Hom)')" class="px-3.5 py-1.5 rounded-lg bg-brand-700 hover:bg-brand-800 text-white text-xs font-bold transition-all">
+                Book Slot
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Doctor 3 -->
+        <div class="bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-luxury border border-slate-100 transition-all">
+          <div class="h-48 bg-gradient-to-tr from-emerald-900 to-royal-950 flex items-center justify-center text-white relative">
+            <i class="fa-solid fa-user-doctor text-6xl text-emerald-300/40"></i>
+            <span class="absolute top-4 right-4 bg-amber-400 text-slate-950 text-[10px] font-extrabold uppercase px-2.5 py-0.5 rounded-full">Pediatric Specialist</span>
+          </div>
+          <div class="p-6">
+            <h3 class="font-bold text-slate-900 text-lg">Dr. Elena Rostova, BHMS, MD</h3>
+            <p class="text-xs text-brand-700 font-semibold mt-0.5">Director of Pediatric & Neurodevelopment</p>
+            <p class="text-xs text-slate-500 mt-2 leading-relaxed">
+              19+ years clinical research. Renowned for constitutional approaches to pediatric allergies, ADHD, sensory regulation, and asthma.
+            </p>
+            <div class="mt-4 pt-4 border-t border-slate-100 flex items-center justify-between">
+              <div>
+                <span class="text-[10px] uppercase font-bold text-slate-400">OPD Timings</span>
+                <p class="text-xs font-semibold text-slate-800">Mon - Thu | 14:00 - 19:30</p>
+              </div>
+              <button onclick="bookWithDoctor('Dr. Elena Rostova, BHMS, MD')" class="px-3.5 py-1.5 rounded-lg bg-brand-700 hover:bg-brand-800 text-white text-xs font-bold transition-all">
+                Book Slot
+              </button>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== CLINICAL EVIDENCE & RESEARCH TIMELINE ==================== -->
+  <section id="research" class="py-20 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <div class="text-center max-w-3xl mx-auto space-y-3">
+        <span class="text-xs font-bold uppercase tracking-widest text-emerald-800 bg-emerald-100 px-3 py-1 rounded-full">Evidence-Based Medicine</span>
+        <h2 class="font-luxury text-3xl sm:text-4xl font-bold text-slate-900">
+          Documented <span class="emerald-gradient-text">Clinical Remission Case Studies</span>
+        </h2>
+        <p class="text-slate-600 text-sm sm:text-base">
+          Verified medical records showing pathological marker normalization and clinical outcomes through individualized constitutional remedies.
+        </p>
+      </div>
+
+      <div class="mt-12 grid lg:grid-cols-3 gap-6">
+        
+        <div class="bg-stone-50 rounded-2xl p-6 border border-slate-200">
+          <div class="flex items-center justify-between text-xs font-bold text-slate-500 mb-2">
+            <span>Case File: #PS-4019</span>
+            <span class="text-emerald-700 bg-emerald-100 px-2 py-0.5 rounded">PASI Score: 28 &rarr; 0</span>
+          </div>
+          <h4 class="font-bold text-slate-900 text-base">Severe Plaque Psoriasis (7-Year Refractory)</h4>
+          <p class="text-xs text-slate-600 mt-2 leading-relaxed">
+            Patient had total lesion coverage on scalp, elbows, and knees. Constitutional remedy <em>Arsenicum Iodatum 200C</em> combined with anti-inflammatory elimination diet resulted in 100% skin clearance within 6 months with zero relapse at 36-month follow-up.
+          </p>
+          <div class="mt-4 pt-3 border-t border-slate-200 text-[11px] text-slate-500 flex justify-between">
+            <span>Duration: 6 Months</span>
+            <span class="font-semibold text-brand-700">Full Remission</span>
+          </div>
+        </div>
+
+        <div class="bg-stone-50 rounded-2xl p-6 border border-slate-200">
+          <div class="flex items-center justify-between text-xs font-bold text-slate-500 mb-2">
+            <span>Case File: #RA-8831</span>
+            <span class="text-emerald-700 bg-emerald-100 px-2 py-0.5 rounded">Anti-CCP: 180 &rarr; 14 U/mL</span>
+          </div>
+          <h4 class="font-bold text-slate-900 text-base">Seropositive Rheumatoid Arthritis</h4>
+          <p class="text-xs text-slate-600 mt-2 leading-relaxed">
+            Severe morning stiffness > 90 mins, bilateral PIP joint swelling. Prescribed constitutional <em>Medorrhinum 1M</em> single doses with strict nightshade-free diet. CRP normalized from 42 mg/L to 2.1 mg/L, complete mobility restored.
+          </p>
+          <div class="mt-4 pt-3 border-t border-slate-200 text-[11px] text-slate-500 flex justify-between">
+            <span>Duration: 9 Months</span>
+            <span class="font-semibold text-brand-700">Antibodies Negative</span>
+          </div>
+        </div>
+
+        <div class="bg-stone-50 rounded-2xl p-6 border border-slate-200">
+          <div class="flex items-center justify-between text-xs font-bold text-slate-500 mb-2">
+            <span>Case File: #TH-1192</span>
+            <span class="text-emerald-700 bg-emerald-100 px-2 py-0.5 rounded">TSH: 14.2 &rarr; 2.1 mIU/L</span>
+          </div>
+          <h4 class="font-bold text-slate-900 text-base">Hashimoto's Thyroiditis with Goiter</h4>
+          <p class="text-xs text-slate-600 mt-2 leading-relaxed">
+            Anti-TPO > 600 IU/mL with chronic fatigue and weight gain. Individualized constitutional remedy <em>Thyroidinum 30C & Calcarea Carbonica 200C</em> normalized endocrine function with full taper off synthetic levothyroxine under endocrinologist review.
+          </p>
+          <div class="mt-4 pt-3 border-t border-slate-200 text-[11px] text-slate-500 flex justify-between">
+            <span>Duration: 8 Months</span>
+            <span class="font-semibold text-brand-700">Euthyroid Maintained</span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== PATIENT TESTIMONIALS ==================== -->
+  <section id="testimonials" class="py-20 bg-stone-50 border-t border-brand-100">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <div class="text-center max-w-3xl mx-auto space-y-3">
+        <span class="text-xs font-bold uppercase tracking-widest text-brand-700 bg-brand-100 px-3 py-1 rounded-full">Global Patient Stories</span>
+        <h2 class="font-luxury text-3xl sm:text-4xl font-bold text-slate-900">
+          Voices of <span class="emerald-gradient-text">Restored Vitality</span>
+        </h2>
+        <p class="text-slate-600 text-sm sm:text-base">
+          Read genuine accounts from patients across 40+ countries who found holistic healing at Hahnemann Royal Hospital.
+        </p>
+      </div>
+
+      <div class="mt-12 grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        
+        <div class="bg-white p-6 rounded-2xl shadow-sm border border-slate-100">
+          <div class="flex items-center gap-1 text-gold-500 text-xs mb-3">
+            <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+          </div>
+          <p class="text-xs text-slate-600 italic leading-relaxed">
+            "I had been told my psoriasis was incurable and was on methotrexate injections with terrible nausea. Dr. Samuel Rao's constitutional analysis changed my life. Within 5 months my skin cleared completely. The diet calculator guidance was also invaluable."
+          </p>
+          <div class="mt-4 pt-3 border-t border-slate-100 flex items-center justify-between">
+            <div>
+              <h5 class="font-bold text-xs text-slate-900">Marcus Sterling</h5>
+              <p class="text-[10px] text-slate-400">London, United Kingdom</p>
+            </div>
+            <span class="text-[10px] font-bold text-emerald-700 bg-emerald-50 px-2 py-0.5 rounded">Verified Patient</span>
+          </div>
+        </div>
+
+        <div class="bg-white p-6 rounded-2xl shadow-sm border border-slate-100">
+          <div class="flex items-center gap-1 text-gold-500 text-xs mb-3">
+            <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+          </div>
+          <p class="text-xs text-slate-600 italic leading-relaxed">
+            "Our 6-year-old son suffered from constant asthma attacks and needed nebulizers every winter. Dr. Elena prescribed a gentle single remedy. He hasn't used a rescue inhaler in over 2 years now. Hahnemann Royal Hospital is a blessing."
+          </p>
+          <div class="mt-4 pt-3 border-t border-slate-100 flex items-center justify-between">
+            <div>
+              <h5 class="font-bold text-xs text-slate-900">Pooja & Rajesh Sharma</h5>
+              <p class="text-[10px] text-slate-400">Bangalore, India</p>
+            </div>
+            <span class="text-[10px] font-bold text-emerald-700 bg-emerald-50 px-2 py-0.5 rounded">Pediatric OPD</span>
+          </div>
+        </div>
+
+        <div class="bg-white p-6 rounded-2xl shadow-sm border border-slate-100">
+          <div class="flex items-center gap-1 text-gold-500 text-xs mb-3">
+            <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+          </div>
+          <p class="text-xs text-slate-600 italic leading-relaxed">
+            "The online OP booking system was seamless. I live in Toronto and did video consultations with Dr. Thorne. The medicine dispatch arrived via DHL within 4 days. Incredible super-specialty care with genuine warmth."
+          </p>
+          <div class="mt-4 pt-3 border-t border-slate-100 flex items-center justify-between">
+            <div>
+              <h5 class="font-bold text-xs text-slate-900">Dr. Jean-Pierre Laurent</h5>
+              <p class="text-[10px] text-slate-400">Toronto, Canada</p>
+            </div>
+            <span class="text-[10px] font-bold text-emerald-700 bg-emerald-50 px-2 py-0.5 rounded">Tele-Consultation</span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== HOMEOPATHIC ACUTE FIRST-AID MODAL ==================== -->
+  <div id="acute-modal" class="fixed inset-0 z-50 bg-slate-950/70 backdrop-blur-sm hidden items-center justify-center p-4">
+    <div class="bg-white rounded-3xl max-w-2xl w-full p-6 sm:p-8 shadow-2xl border border-brand-100 space-y-4 max-h-[90vh] overflow-y-auto">
+      <div class="flex items-center justify-between pb-4 border-b border-slate-100">
+        <div class="flex items-center gap-2.5">
+          <div class="w-10 h-10 rounded-xl bg-red-100 text-red-700 flex items-center justify-center text-lg">
+            <i class="fa-solid fa-kit-medical"></i>
+          </div>
+          <div>
+            <h3 class="font-bold text-slate-900 text-base">Homeopathic Acute Emergency & Triage Guide</h3>
+            <p class="text-[11px] text-slate-500">Educational rapid reference for common acute scenarios</p>
+          </div>
+        </div>
+        <button onclick="toggleAcuteGuideModal()" class="text-slate-400 hover:text-slate-700 p-2 text-lg">&times;</button>
+      </div>
+
+      <div class="space-y-3 text-xs">
+        <div class="p-3.5 rounded-xl bg-stone-50 border border-slate-200">
+          <h5 class="font-bold text-slate-900 flex items-center gap-1.5">
+            <span class="text-brand-700 font-mono">1. Blunt Trauma / Sprains / Contusions</span>
+            <span class="bg-brand-100 text-brand-800 text-[9px] px-1.5 py-0.2 rounded font-bold">Arnica Montana 30C / 200C</span>
+          </h5>
+          <p class="text-slate-600 mt-1">Sensation of being bruised, beaten, bed feels too hard. Take 4 globules sublingually every 2 hours until swelling diminishes.</p>
+        </div>
+
+        <div class="p-3.5 rounded-xl bg-stone-50 border border-slate-200">
+          <h5 class="font-bold text-slate-900 flex items-center gap-1.5">
+            <span class="text-red-700 font-mono">2. Sudden High Fever After Cold Exposure / Panic</span>
+            <span class="bg-red-100 text-red-800 text-[9px] px-1.5 py-0.2 rounded font-bold">Aconitum Napellus 30C</span>
+          </h5>
+          <p class="text-slate-600 mt-1">Sudden violent onset, restless agitation, fear, dry hot skin without sweat. Take 4 pellets every 30 minutes in acute peak.</p>
+        </div>
+
+        <div class="p-3.5 rounded-xl bg-stone-50 border border-slate-200">
+          <h5 class="font-bold text-slate-900 flex items-center gap-1.5">
+            <span class="text-amber-700 font-mono">3. Throbbing Headache / Flushed Face / High Fever</span>
+            <span class="bg-amber-100 text-amber-800 text-[9px] px-1.5 py-0.2 rounded font-bold">Belladonna 30C</span>
+          </h5>
+          <p class="text-slate-600 mt-1">Red face, dilated pupils, throbbing carotids, sensitive to light and noise. 4 pellets every 2 hours.</p>
+        </div>
+
+        <div class="p-3.5 rounded-xl bg-stone-50 border border-slate-200">
+          <h5 class="font-bold text-slate-900 flex items-center gap-1.5">
+            <span class="text-teal-700 font-mono">4. Punctured Wounds / Insect Bites / Rusty Nails</span>
+            <span class="bg-teal-100 text-teal-800 text-[9px] px-1.5 py-0.2 rounded font-bold">Ledum Palustre 30C / 200C</span>
+          </h5>
+          <p class="text-slate-600 mt-1">Wounded part feels cold to touch yet relieved by cold applications. Prevention of septic infections.</p>
+        </div>
+      </div>
+
+      <div class="p-3 bg-red-50 text-red-900 rounded-xl text-[11px] flex items-center gap-2">
+        <i class="fa-solid fa-circle-exclamation text-red-600"></i>
+        <span><strong>Disclaimer:</strong> For severe trauma, chest pain, or dyspnea, immediately contact the nearest emergency room or hospital hotline (1800-424-6336).</span>
+      </div>
+
+      <div class="text-right pt-2">
+        <button onclick="toggleAcuteGuideModal()" class="px-5 py-2 rounded-xl bg-slate-900 text-white font-bold text-xs">Close Guide</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==================== FOOTER ==================== -->
+  <footer class="bg-royal-950 text-slate-400 text-xs border-t border-brand-900/60">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-10">
+        
+        <!-- Col 1: Brand & Accreditation -->
+        <div class="lg:col-span-2 space-y-4">
+          <div class="flex items-center gap-3">
+            <div class="w-10 h-10 rounded-xl bg-brand-800 text-gold-400 flex items-center justify-center text-xl shadow-md border border-gold-500/30">
+              <i class="fa-solid fa-leaf"></i>
+            </div>
+            <div>
+              <span class="font-royal text-base font-bold text-white tracking-wider block">HAHNEMANN ROYAL</span>
+              <span class="text-[9px] uppercase tracking-widest text-brand-400 font-semibold">Institute of Homeopathy & Research</span>
+            </div>
+          </div>
+          <p class="text-xs text-slate-400 leading-relaxed font-light">
+            Founded in 1988, Hahnemann Royal Hospital is an internationally accredited apex healthcare sanctuary dedicated to classical constitutional medicine, pioneering clinical research, and scientific disease nutrition.
+          </p>
+          <div class="flex items-center gap-3 pt-2">
+            <span class="px-2.5 py-1 rounded bg-brand-900/70 border border-brand-700/50 text-[10px] text-brand-300 font-bold">NABH ACCREDITED</span>
+            <span class="px-2.5 py-1 rounded bg-brand-900/70 border border-brand-700/50 text-[10px] text-brand-300 font-bold">ISO 9001:2015</span>
+            <span class="px-2.5 py-1 rounded bg-brand-900/70 border border-brand-700/50 text-[10px] text-gold-400 font-bold">AYUSH RECOGNIZED</span>
+          </div>
+        </div>
+
+        <!-- Col 2: Clinical Departments -->
+        <div class="space-y-3">
+          <h4 class="font-bold text-white text-xs uppercase tracking-wider text-emerald-400">Specialties</h4>
+          <ul class="space-y-2 text-slate-400">
+            <li><a href="#specialties" class="hover:text-gold-400 transition-colors">Constitutional Medicine</a></li>
+            <li><a href="#specialties" class="hover:text-gold-400 transition-colors">Autoimmune & Psoriasis</a></li>
+            <li><a href="#specialties" class="hover:text-gold-400 transition-colors">Pediatric Homeopathy</a></li>
+            <li><a href="#specialties" class="hover:text-gold-400 transition-colors">Rheumatology & Joints</a></li>
+            <li><a href="#specialties" class="hover:text-gold-400 transition-colors">Respiratory & Allergies</a></li>
+            <li><a href="#specialties" class="hover:text-gold-400 transition-colors">Endocrinology & Thyroid</a></li>
+          </ul>
+        </div>
+
+        <!-- Col 3: Interactive Tools -->
+        <div class="space-y-3">
+          <h4 class="font-bold text-white text-xs uppercase tracking-wider text-emerald-400">Patient Tools</h4>
+          <ul class="space-y-2 text-slate-400">
+            <li><a href="#op-booking" class="hover:text-gold-400 transition-colors">Fast-Track OP Booking</a></li>
+            <li><a href="#diet-calculator" class="hover:text-gold-400 transition-colors">Disease Diet Calculator</a></li>
+            <li><a href="#materia-medica" class="hover:text-gold-400 transition-colors">Materia Medica Explorer</a></li>
+            <li><a href="#research" class="hover:text-gold-400 transition-colors">Clinical Remission Records</a></li>
+            <li><a href="javascript:void(0)" onclick="toggleAcuteGuideModal()" class="hover:text-gold-400 transition-colors">Acute Triage Guide</a></li>
+          </ul>
+        </div>
+
+        <!-- Col 4: Campus Contact -->
+        <div class="space-y-3">
+          <h4 class="font-bold text-white text-xs uppercase tracking-wider text-emerald-400">Hospital Campus</h4>
+          <p class="text-xs text-slate-400 leading-relaxed">
+            Hahnemann Royal Medical Enclave, Sector 12, Healthcare Boulevard.<br>
+            Hotline: <strong class="text-white">+91 1800-424-6336</strong><br>
+            OPD Enquiries: <strong class="text-white">+91 80 4920 1888</strong><br>
+            Email: <span class="text-brand-300">opd@hahnemannroyal.hospital</span>
+          </p>
+          <div class="pt-1 flex gap-3 text-slate-400 text-sm">
+            <a href="#" class="hover:text-gold-400"><i class="fa-brands fa-youtube"></i></a>
+            <a href="#" class="hover:text-gold-400"><i class="fa-brands fa-linkedin"></i></a>
+            <a href="#" class="hover:text-gold-400"><i class="fa-brands fa-x-twitter"></i></a>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Bottom Disclaimer -->
+      <div class="mt-12 pt-6 border-t border-brand-900/50 flex flex-col sm:flex-row items-center justify-between text-[11px] text-slate-500 gap-4">
+        <p>&copy; 2026 Hahnemann Royal Advanced Homeopathic Hospital & Research Institute. All Rights Reserved.</p>
+        <p class="text-center sm:text-right">
+          <em>Educational Simulation & Medical Information Portal. Prepared in accordance with Classical Homeopathic Principles.</em>
+        </p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ==================== LOGIC ENGINE / JAVASCRIPT ==================== -->
+  <script>
+    /* =========================================================================
+       DIET CALCULATOR DATA & LOGIC ENGINE
+       ========================================================================= */
+    const diseaseDietDB = {
+      diabetes: {
+        title: "Type 2 Diabetes & Insulin Resistance",
+        caloricFactor: 0.90, // slight deficit for glycemic sensitivity
+        macros: { carb: 30, protein: 35, fat: 35 },
+        carbGramsRatio: 0.30,
+        proteinRatio: 1.6, // g per kg
+        antidoteNote: "Strictly avoid artificial saccharin, menthol candies, and excessive black coffee which can spike insulin and antidote constitutional remedies such as Syzygium Jambolanum or Uranium Nitricum.",
+        champion: [
+          "Fenugreek seeds soaked in copper water (potent beta-cell stimulator)",
+          "Bitter gourd (Karela) juice with pinch of rock salt",
+          "Low-GI millets (Barnyard, Foxtail) with soaked chia seeds",
+          "Amla (Indian Gooseberry) with fresh turmeric",
+          "Green leafy vegetables (Spinach, Fenugreek, Moringa leaves)"
+        ],
+        eliminate: [
+          "Refined table sugars, high-fructose corn syrups, and white maida",
+          "Ultra-processed packaged fruit juices and sodas",
+          "Deep-fried potatoes and trans-fat bakery confectionery",
+          "High-glycemic ripe bananas, mangoes, and dried dates in excess"
+        ],
+        meals: [
+          { phase: "7:00 AM", title: "Vitality Booster", desc: "Warm water with soaked methi seeds & 5 peeled almonds" },
+          { phase: "8:30 AM", title: "Low-GI Breakfast", desc: "Foxtail millet idli or sprout salad with moringa chutney" },
+          { phase: "1:00 PM", title: "Therapeutic Lunch", desc: "Karela sabzi, 1 jowar roti, bowl of dal & cucumber salad" },
+          { phase: "5:00 PM", title: "Evening Infusion", desc: "Cinnamon & tulsi herbal decoction with roasted chana" },
+          { phase: "7:30 PM", title: "Light Restorative Dinner", desc: "Clear vegetable broth with paneer cubes or grilled tofu" }
+        ]
+      },
+      hypertension: {
+        title: "Hypertension & Cardiovascular Health",
+        caloricFactor: 0.95,
+        macros: { carb: 45, protein: 25, fat: 30 },
+        carbGramsRatio: 0.45,
+        proteinRatio: 1.2,
+        antidoteNote: "Minimize high sodium, raw garlic extracts taken immediately around remedy dose, and liquorice (which spikes aldosterone and blood pressure). Complements Rauwolfia Serpentina therapy.",
+        champion: [
+          "Beetroot extract and raw celery stalks (rich in natural vasodilating nitrates)",
+          "Garlic pearls lightly sauteed in cold-pressed mustard oil",
+          "Potassium-dense pomegranate and steamed ash gourd juice",
+          "Pumpkin seeds and soaked walnuts (Omega-3 cardio protection)",
+          "Hibiscus flower infusion (proven natural ACE inhibitor)"
+        ],
+        eliminate: [
+          "Table salt > 2 grams/day; commercial pickles, papads, and soy sauce",
+          "Processed cured meats, sausages, and preserved cheeses",
+          "Caffeinated energy stimulants and commercial sodas",
+          "Hydrogenated fats and reheated vegetable oils"
+        ],
+        meals: [
+          { phase: "7:00 AM", title: "Vitality Booster", desc: "Ash gourd juice with pinch of black pepper" },
+          { phase: "8:30 AM", title: "Low-Sodium Breakfast", desc: "Rolled oats with flaxseed powder & pomegranate seeds" },
+          { phase: "1:00 PM", title: "Therapeutic Lunch", desc: "Steamed brown rice, ridge gourd dal, raw beetroot salad" },
+          { phase: "5:00 PM", title: "Evening Infusion", desc: "Warm hibiscus herbal tea with 4 soaked walnuts" },
+          { phase: "7:30 PM", title: "Restorative Dinner", desc: "Bottle gourd (Lauki) soup with quinoa and steamed greens" }
+        ]
+      },
+      psoriasis: {
+        title: "Psoriasis, Eczema & Autoimmune Skin",
+        caloricFactor: 1.0,
+        macros: { carb: 35, protein: 30, fat: 35 },
+        carbGramsRatio: 0.35,
+        proteinRatio: 1.5,
+        antidoteNote: "Strictly avoid hot pungent chilies, nightshades, artificial vinegar, and fermented pickles. Preserves vital force for remedies like Arsenicum Album, Graphites, and Sulphur.",
+        champion: [
+          "Cold-pressed virgin coconut oil & wild flaxseed oil (rich in anti-inflammatory EPA/ALA)",
+          "Fresh organic aloe vera gel blended with cucumber juice",
+          "Raw turmeric with black pepper (curcumin immune regulator)",
+          "Steamed cruciferous greens and antioxidant-rich blueberries",
+          "Hydrating soaked basil seeds (Sabja) in coconut water"
+        ],
+        eliminate: [
+          "Nightshade vegetables (Eggplant / Brinjal, bell peppers, tomatoes)",
+          "Spicy junk foods, synthetic food colourings, and MSG",
+          "Commercial gluten, pasteurized cow milk, and processed cheese",
+          "Alcohol and tobacco (primary triggers for keratinocyte flare-ups)"
+        ],
+        meals: [
+          { phase: "7:00 AM", title: "Vitality Booster", desc: "Pure aloe vera & cucumber juice with turmeric" },
+          { phase: "8:30 AM", title: "Alkaline Breakfast", desc: "Gluten-free buckwheat pancakes with chia seed spread" },
+          { phase: "1:00 PM", title: "Therapeutic Lunch", desc: "Steamed zucchini, yellow moong dal, 2 ragi rotis & greens" },
+          { phase: "5:00 PM", title: "Evening Infusion", desc: "Chamomile flower infusion with pumpkin seed trail" },
+          { phase: "7:30 PM", title: "Restorative Dinner", desc: "Detox vegetable stew with sweet potato & hemp seeds" }
+        ]
+      },
+      gerd: {
+        title: "GERD, Acid Reflux & Irritable Bowel (IBS)",
+        caloricFactor: 0.95,
+        macros: { carb: 45, protein: 25, fat: 30 },
+        carbGramsRatio: 0.45,
+        proteinRatio: 1.3,
+        antidoteNote: "Avoid spearmint, strong peppermint, chocolate, and raw citrus on an empty stomach. Harmonizes with Nux Vomica and Carbo Vegetabilis treatment.",
+        champion: [
+          "Cold fresh coconut water and blanched bottle gourd",
+          "Fennel seed (Saunf) and cumin water after every meal",
+          "Probiotic rice congee or homemade coconut yogurt",
+          "Ripe papaya (contains papain digestive enzyme)",
+          "Steamed carrots, pumpkin, and easily digestible yellow lentils"
+        ],
+        eliminate: [
+          "Carbonated fizzy beverages and black coffee on empty stomach",
+          "Deep-fried snacks, samosas, and raw onions/garlic",
+          "Extremely hot chilies, vinegar-soaked sauces, and citrus marinades",
+          "Late-night heavy meals eaten less than 3 hours before sleep"
+        ],
+        meals: [
+          { phase: "7:00 AM", title: "Vitality Booster", desc: "Fennel and cumin seed infused water" },
+          { phase: "8:30 AM", title: "Gentle Breakfast", desc: "Warm oatmeal cooked in almond milk with ripe papaya" },
+          { phase: "1:00 PM", title: "Therapeutic Lunch", desc: "Soft khichdi cooked with cumin, ghee, and bottle gourd" },
+          { phase: "5:00 PM", title: "Evening Infusion", desc: "Slippery elm or licorice root tea with 2 digestives" },
+          { phase: "7:00 PM", title: "Early Light Dinner", desc: "Steamed carrot-pumpkin soup with blanched zucchini" }
+        ]
+      },
+      thyroid: {
+        title: "Hypothyroidism & Slow Metabolism",
+        caloricFactor: 0.88,
+        macros: { carb: 35, protein: 35, fat: 30 },
+        carbGramsRatio: 0.35,
+        proteinRatio: 1.6,
+        antidoteNote: "Avoid unfermented raw soy products and excessive raw cruciferous vegetables which contain goitrogens that block iodine uptake. Synergizes with Thyroidinum and Calcarea Carb.",
+        champion: [
+          "Brazil nuts (1–2 daily for optimal biological selenium)",
+          "Ashwagandha root decoction with warm water at bedtime",
+          "Iodine-rich sea kelp or Himalayan pink salt in moderation",
+          "Sprouted moong beans and organic pumpkin seeds (zinc dense)",
+          "Amla juice and ginger tea to stimulate sluggish digestive Agni"
+        ],
+        eliminate: [
+          "Raw uncooked broccoli, cabbage, cauliflower, and kale",
+          "Soy protein isolate, soy milk, and processed vegan meats",
+          "Refined flour (Maida) and bakery trans fats",
+          "Cold, frozen drinks and refrigerated leftover foods"
+        ],
+        meals: [
+          { phase: "7:00 AM", title: "Vitality Booster", desc: "Warm ginger-lemon water with 2 soaked Brazil nuts" },
+          { phase: "8:30 AM", title: "Metabolic Breakfast", desc: "Sprouted moong chilla with fresh coconut-coriander chutney" },
+          { phase: "1:00 PM", title: "Therapeutic Lunch", desc: "Cooked spinach dal, 1 whole-wheat roti & fresh carrot salad" },
+          { phase: "5:00 PM", title: "Evening Infusion", desc: "Cinnamon-clove green tea with roasted sunflower seeds" },
+          { phase: "7:30 PM", title: "Restorative Dinner", desc: "Grilled cottage cheese or lentils with steamed asparagus" }
+        ]
+      },
+      "fatty-liver": {
+        title: "Fatty Liver (NAFLD) & High Cholesterol",
+        caloricFactor: 0.85,
+        macros: { carb: 30, protein: 35, fat: 35 },
+        carbGramsRatio: 0.30,
+        proteinRatio: 1.5,
+        antidoteNote: "Eliminate industrial refined seed oils and alcohol. Supports Chelidonium Majus and Lycopodium constitutional hepatic therapy.",
+        champion: [
+          "Dandelion root tea and milk thistle decoctions",
+          "Cold-pressed extra virgin olive oil and unheated flax oil",
+          "Fresh garlic, turmeric, and beetroot juice for hepatic detox",
+          "Green tea catechins and cruciferous vegetables (lightly steamed)",
+          "High-fiber oats and chia seeds to sweep intestinal bile salts"
+        ],
+        eliminate: [
+          "Alcohol in all quantities (whisky, beer, wine)",
+          "High fructose corn syrups, sugary bakery goods, and ice cream",
+          "Deep-fried foods in repeatedly boiled palm/canola oil",
+          "Fatty red meats and high-saturated animal shortenings"
+        ],
+        meals: [
+          { phase: "7:00 AM", title: "Vitality Booster", desc: "Warm water with organic apple cider vinegar & turmeric" },
+          { phase: "8:30 AM", title: "Fiber-Rich Breakfast", desc: "Steel-cut oats with chia seeds, cinnamon, and walnuts" },
+          { phase: "1:00 PM", title: "Therapeutic Lunch", desc: "Steamed vegetable medley, yellow dal, and small portion brown rice" },
+          { phase: "5:00 PM", title: "Evening Infusion", desc: "Dandelion root tea with a handful of roasted almonds" },
+          { phase: "7:30 PM", title: "Restorative Dinner", desc: "Clear vegetable lentil soup with steamed broccoli & tofu" }
+        ]
+      },
+      arthritis: {
+        title: "Rheumatoid Arthritis & High Uric Acid",
+        caloricFactor: 0.95,
+        macros: { carb: 40, protein: 30, fat: 30 },
+        carbGramsRatio: 0.40,
+        proteinRatio: 1.4,
+        antidoteNote: "Avoid heavy sour foods, curd at night, red meats, and shellfish which skyrocket purines and antidote Rhus Tox and Ledum Palustre.",
+        champion: [
+          "Tart cherry juice (lowers serum uric acid rapidly)",
+          "Fresh ginger and turmeric decoction with a drop of ghee",
+          "Alkalizing celery juice and raw cucumber water",
+          "Omega-3 rich chia seeds, walnuts, and cold-pressed flax oil",
+          "Steamed green vegetables and alkalizing barley water"
+        ],
+        eliminate: [
+          "Red meats, organ meats (liver/kidney), and canned anchovies",
+          "High-fructose corn syrup beverages and beer",
+          "Sour curds and citrus fruits taken after sundown",
+          "Nightshades (Tomatoes, potatoes, eggplants during acute flares)"
+        ],
+        meals: [
+          { phase: "7:00 AM", title: "Vitality Booster", desc: "Fresh tart cherry or celery juice with turmeric" },
+          { phase: "8:30 AM", title: "Anti-Inflammatory Breakfast", desc: "Barley porridge with crushed walnuts & blueberries" },
+          { phase: "1:00 PM", title: "Therapeutic Lunch", desc: "Cooked bottle gourd, moong dal soup, and 2 jowar rotis" },
+          { phase: "5:00 PM", title: "Evening Infusion", desc: "Ginger-cinnamon decoction with roasted pumpkin seeds" },
+          { phase: "7:30 PM", title: "Restorative Dinner", desc: "Alkalizing green vegetable stew with quinoa" }
+        ]
+      },
+      migraine: {
+        title: "Chronic Migraine & Tension Headaches",
+        caloricFactor: 1.0,
+        macros: { carb: 45, protein: 25, fat: 30 },
+        carbGramsRatio: 0.45,
+        proteinRatio: 1.3,
+        antidoteNote: "Eliminate tyramine-rich foods (aged cheese, red wine) and artificial sweeteners. Essential when prescribing Belladonna, Spigelia, or Natrum Muriaticum.",
+        champion: [
+          "Magnesium-dense pumpkin seeds, spinach, and raw almonds",
+          "Hydrating electrolyte water with pinch of Himalayan pink salt",
+          "Fresh ginger tea (blocks prostaglandin synthesis)",
+          "Peppermint-free herbal infusions like lavender and lemon balm",
+          "Complex whole grains to prevent reactive hypoglycemia dips"
+        ],
+        eliminate: [
+          "Aged cheeses (Cheddar, Parmesan, Blue cheese) containing tyramine",
+          "Monosodium glutamate (MSG), cured deli meats, and nitrates",
+          "Artificial sweeteners like Aspartame and sucralose",
+          "Skipping meals or fasting > 5 hours during work hours"
+        ],
+        meals: [
+          { phase: "7:00 AM", title: "Vitality Booster", desc: "Electrolyte water with soaked almonds & pumpkin seeds" },
+          { phase: "8:30 AM", title: "Steady-Energy Breakfast", desc: "Oatmeal with chia seeds, banana, and almond butter" },
+          { phase: "1:00 PM", title: "Therapeutic Lunch", desc: "Lentil soup, brown rice, steamed carrots, and spinach" },
+          { phase: "4:30 PM", title: "Mid-Afternoon Snack", desc: "Fresh ginger tea with whole-grain rye crackers" },
+          { phase: "7:30 PM", title: "Restorative Dinner", desc: "Steamed zucchini, quinoa, and warm vegetable broth" }
+        ]
+      },
+      asthma: {
+        title: "Bronchial Asthma & Respiratory Allergies",
+        caloricFactor: 0.95,
+        macros: { carb: 40, protein: 30, fat: 30 },
+        carbGramsRatio: 0.40,
+        proteinRatio: 1.4,
+        antidoteNote: "Strictly avoid refrigerated cold foods, pasteurized homogenized milk, and food sulfites. Aids Arsenicum Album, Blatta Orientalis, and Antimonium Tart.",
+        champion: [
+          "Warm ginger-clove-tulsi tea with a touch of organic raw honey",
+          "Vitamin C rich amla (Indian gooseberry) and guava",
+          "Fresh garlic and onions (rich in natural anti-allergic quercetin)",
+          "Lukewarm broths with black pepper and turmeric",
+          "Soaked figs (Anjeer) to liquefy tenaciously adhering bronchial mucus"
+        ],
+        eliminate: [
+          "Ice creams, chilled sodas, and refrigerated leftovers",
+          "Pasteurized dairy milk and heavy creamy gravies",
+          "Foods preserved with sulfites (dried apricots, packaged wines)",
+          "Excessive polished white rice eaten at dinner"
+        ],
+        meals: [
+          { phase: "7:00 AM", title: "Vitality Booster", desc: "Tulsi, ginger, and black pepper infused lukewarm decoction" },
+          { phase: "8:30 AM", title: "Mucus-Free Breakfast", desc: "Warm ragi porridge or vegetable poha with roasted peanuts" },
+          { phase: "1:00 PM", title: "Therapeutic Lunch", desc: "Warm moong dal, 2 rotis with garlic-coriander chutney" },
+          { phase: "5:00 PM", title: "Evening Infusion", desc: "Mullein or licorice root tea with 2 soaked figs" },
+          { phase: "7:00 PM", title: "Early Warm Dinner", desc: "Vegetable pepper broth with soft steamed millets" }
+        ]
+      },
+      pcod: {
+        title: "PCOD / PCOS & Hormonal Imbalance",
+        caloricFactor: 0.88,
+        macros: { carb: 30, protein: 35, fat: 35 },
+        carbGramsRatio: 0.30,
+        proteinRatio: 1.6,
+        antidoteNote: "Avoid excess commercial dairy laced with bovine growth hormones, and high insulin-spiking bakery treats. Supports Pulsatilla and Sepia constitutional therapy.",
+        champion: [
+          "Seed cycling protocol (Pumpkin + Flax seeds in follicular phase)",
+          "Spearmint tea (scientifically documented to reduce free androgens)",
+          "High-fiber cruciferous greens and avocado for hormone conjugation",
+          "Organic cinnamon powder added to morning meals",
+          "Sprouted legumes and plant-based protein sources"
+        ],
+        eliminate: [
+          "Commercial dairy products (milk, ice-cream, paneer from cattle)",
+          "High glycemic index refined sugars, pastries, and bubble tea",
+          "Trans-fats and processed fried packaged snacks",
+          "Endocrine-disrupting canned foods with BPA linings"
+        ],
+        meals: [
+          { phase: "7:00 AM", title: "Vitality Booster", desc: "Spearmint tea with 1 tbsp ground flaxseeds" },
+          { phase: "8:30 AM", title: "Hormone-Balance Breakfast", desc: "Almond flour pancakes or tofu scramble with avocado" },
+          { phase: "1:00 PM", title: "Therapeutic Lunch", desc: "Quinoa salad, yellow lentil soup, and steamed greens" },
+          { phase: "5:00 PM", title: "Evening Infusion", desc: "Cinnamon herbal infusion with 1 tbsp pumpkin seeds" },
+          { phase: "7:30 PM", title: "Restorative Dinner", desc: "Grilled vegetable medley with roasted chickpeas & tahini" }
+        ]
+      }
+    };
+
+    // State Variables
+    let userGender = 'male';
+    let userDietType = 'veg';
+
+    function setGender(gender) {
+      userGender = gender;
+      document.getElementById('btn-gender-male').className = gender === 'male' 
+        ? "py-2.5 text-xs font-bold rounded-lg border border-brand-500 bg-brand-50 text-brand-800 transition-all text-center"
+        : "py-2.5 text-xs font-bold rounded-lg border border-slate-200 bg-stone-50 text-slate-600 hover:bg-slate-100 transition-all text-center";
+      document.getElementById('btn-gender-female').className = gender === 'female' 
+        ? "py-2.5 text-xs font-bold rounded-lg border border-brand-500 bg-brand-50 text-brand-800 transition-all text-center"
+        : "py-2.5 text-xs font-bold rounded-lg border border-slate-200 bg-stone-50 text-slate-600 hover:bg-slate-100 transition-all text-center";
+      computeDietProtocol();
+    }
+
+    function setDietType(type) {
+      userDietType = type;
+      ['veg', 'vegan', 'nonveg'].forEach(t => {
+        const btn = document.getElementById(`btn-diet-${t}`);
+        if (t === type) {
+          btn.className = "py-2 text-xs font-bold rounded-lg border border-brand-500 bg-brand-50 text-brand-800 transition-all";
+        } else {
+          btn.className = "py-2 text-xs font-bold rounded-lg border border-slate-200 bg-stone-50 text-slate-600 hover:bg-slate-100 transition-all";
+        }
+      });
+      computeDietProtocol();
+    }
+
+    function updateWeightDisplay(val) {
+      document.getElementById('weight-val').innerText = `${val} kg`;
+      computeDietProtocol();
+    }
+
+    function updateHeightDisplay(val) {
+      document.getElementById('height-val').innerText = `${val} cm`;
+      computeDietProtocol();
+    }
+
+    function computeDietProtocol(isManual = false) {
+      const diseaseKey = document.getElementById('diet-disease-select').value;
+      const data = diseaseDietDB[diseaseKey] || diseaseDietDB.diabetes;
+      const age = parseInt(document.getElementById('diet-age').value) || 35;
+      const weight = parseFloat(document.getElementById('diet-weight').value) || 70;
+      const height = parseFloat(document.getElementById('diet-height').value) || 170;
+      const activity = parseFloat(document.getElementById('diet-activity').value) || 1.375;
+
+      // Calculate BMR using Mifflin-St Jeor Equation
+      let bmr = (10 * weight) + (6.25 * height) - (5 * age);
+      if (userGender === 'male') {
+        bmr += 5;
+      } else {
+        bmr -= 161;
+      }
+
+      // Calculate Total Daily Energy Expenditure (TDEE) and Target Caloric Intake
+      let tdee = bmr * activity;
+      let targetCalories = Math.round(tdee * data.caloricFactor);
+
+      // Hydration calculation: 35ml per kg + disease adjustments
+      let waterLiters = (weight * 0.035) + 0.3;
+      if (diseaseKey === 'hypertension' || diseaseKey === 'gerd') waterLiters = Math.min(waterLiters, 3.2);
+
+      // Macronutrients calculation
+      let carbCalories = targetCalories * (data.macros.carb / 100);
+      let carbGrams = Math.round(carbCalories / 4);
+
+      let proteinCalories = targetCalories * (data.macros.protein / 100);
+      let proteinGrams = Math.round(proteinCalories / 4);
+
+      let fatCalories = targetCalories * (data.macros.fat / 100);
+      let fatGrams = Math.round(fatCalories / 9);
+
+      // Update UI elements with smooth transitions
+      document.getElementById('result-disease-badge').innerText = `Protocol: ${data.title}`;
+      document.getElementById('target-calories-val').innerText = targetCalories.toLocaleString();
+      document.getElementById('bmr-display').innerText = `BMR: ${Math.round(bmr).toLocaleString()} kcal | TDEE: ${Math.round(tdee).toLocaleString()} kcal`;
+
+      // Animated Circular Meter: perimeter = 2 * PI * 42 ≈ 264
+      const circumference = 264;
+      const offset = circumference - (circumference * Math.min(targetCalories / 3000, 1));
+      const circle = document.getElementById('calorie-progress-circle');
+      if (circle) circle.style.strokeDashoffset = offset;
+
+      // Update Macro Bars
+      document.getElementById('macro-carb-val').innerText = `${data.macros.carb}% (${carbGrams}g)`;
+      document.getElementById('bar-carb').style.width = `${data.macros.carb}%`;
+
+      document.getElementById('macro-protein-val').innerText = `${data.macros.protein}% (${proteinGrams}g)`;
+      document.getElementById('bar-protein').style.width = `${data.macros.protein}%`;
+
+      document.getElementById('macro-fat-val').innerText = `${data.macros.fat}% (${fatGrams}g)`;
+      document.getElementById('bar-fat').style.width = `${data.macros.fat}%`;
+
+      document.getElementById('water-intake-val').innerText = `${waterLiters.toFixed(1)} Liters / ${Math.round(waterLiters * 4.2)} Glasses`;
+      document.getElementById('homeo-compatibility-text').innerText = data.antidoteNote;
+
+      // Populate Champions List
+      const championUl = document.getElementById('foods-champion-list');
+      championUl.innerHTML = data.champion.map(item => `
+        <li class="flex items-start gap-2">
+          <i class="fa-solid fa-check text-emerald-500 mt-1 shrink-0 text-xs"></i>
+          <span>${item}</span>
+        </li>
+      `).join('');
+
+      // Populate Eliminate List
+      const eliminateUl = document.getElementById('foods-eliminate-list');
+      eliminateUl.innerHTML = data.eliminate.map(item => `
+        <li class="flex items-start gap-2">
+          <i class="fa-solid fa-xmark text-rose-500 mt-1 shrink-0 text-xs"></i>
+          <span>${item}</span>
+        </li>
+      `).join('');
+
+      // Populate Meal Schedule Blueprint
+      const mealContainer = document.getElementById('meal-schedule-container');
+      mealContainer.innerHTML = data.meals.map(m => `
+        <div class="p-3.5 rounded-xl bg-stone-50 border border-slate-100 flex flex-col justify-between">
+          <div>
+            <div class="text-[10px] font-mono text-brand-700 font-bold">${m.phase}</div>
+            <div class="font-bold text-xs text-slate-900 mt-0.5">${m.title}</div>
+            <p class="text-[11px] text-slate-500 mt-1 leading-snug">${m.desc}</p>
+          </div>
+        </div>
+      `).join('');
+    }
+
+    function resetDietCalculator() {
+      document.getElementById('diet-disease-select').value = 'diabetes';
+      document.getElementById('diet-age').value = '38';
+      document.getElementById('diet-weight').value = '72';
+      document.getElementById('diet-height').value = '172';
+      document.getElementById('diet-activity').value = '1.375';
+      updateWeightDisplay(72);
+      updateHeightDisplay(172);
+      setGender('male');
+      setDietType('veg');
+    }
+
+    function printDietSheet() {
+      window.print();
+    }
+
+    /* =========================================================================
+       DOCTORS & OP BOOKING WIZARD ENGINE
+       ========================================================================= */
+    const doctorsDB = [
+      {
+        id: "dr-samuel",
+        name: "Dr. Samuel H. Rao, MD (Hom)",
+        title: "Chief of Staff & Head of Constitutional Medicine",
+        dept: "constitutional",
+        deptLabel: "Constitutional Medicine",
+        room: "Chamber 204 (Floor 2)",
+        experience: "32+ Yrs",
+        fee: "₹800",
+        rating: 4.98
+      },
+      {
+        id: "dr-aris",
+        name: "Dr. Aris Thorne, MD (Hom), F.C.H",
+        title: "Senior Consultant in Autoimmune Dermatology",
+        dept: "dermatology",
+        deptLabel: "Autoimmune & Dermatology",
+        room: "Chamber 306 (Floor 3)",
+        experience: "24+ Yrs",
+        fee: "₹750",
+        rating: 4.95
+      },
+      {
+        id: "dr-elena",
+        name: "Dr. Elena Rostova, BHMS, MD",
+        title: "Director of Pediatric & Neurodevelopmental Care",
+        dept: "pediatrics",
+        deptLabel: "Pediatric & Neuro-Care",
+        room: "Chamber 114 (Floor 1)",
+        experience: "19+ Yrs",
+        fee: "₹700",
+        rating: 4.96
+      },
+      {
+        id: "dr-vikram",
+        name: "Dr. Vikramaditya Sen, MD (Hom)",
+        title: "Chief Consultant in Endocrinology & Thyroid",
+        dept: "endocrinology",
+        deptLabel: "Endocrine & Metabolic",
+        room: "Chamber 210 (Floor 2)",
+        experience: "21+ Yrs",
+        fee: "₹750",
+        rating: 4.92
+      },
+      {
+        id: "dr-meera",
+        name: "Dr. Meera Nambiar, MD (Hom)",
+        title: "Head of Rheumatology & Musculoskeletal Preservation",
+        dept: "rheumatology",
+        deptLabel: "Rheumatology & Joints",
+        room: "Chamber 218 (Floor 2)",
+        experience: "18+ Yrs",
+        fee: "₹700",
+        rating: 4.94
+      },
+      {
+        id: "dr-julian",
+        name: "Dr. Julian Vance, MD (Hom), M.Sc",
+        title: "Senior Consultant in Pulmonology & Allergy Institute",
+        dept: "respiratory",
+        deptLabel: "Respiratory & Allergy",
+        room: "Chamber 302 (Floor 3)",
+        experience: "16+ Yrs",
+        fee: "₹650",
+        rating: 4.91
+      }
+    ];
+
+    let currentBookingStep = 1;
+    let selectedDoctor = doctorsDB[0];
+    let selectedSlot = "10:30 AM";
+    let selectedSlotWindow = "morning";
+
+    function renderDoctorsGrid() {
+      const container = document.getElementById('doctor-selection-grid');
+      const deptFilter = document.getElementById('op-dept-select').value;
+      
+      const filtered = deptFilter === 'all' 
+        ? doctorsDB 
+        : doctorsDB.filter(d => d.dept === deptFilter);
+
+      container.innerHTML = filtered.map((doc, idx) => `
+        <label class="cursor-pointer">
+          <input type="radio" name="selected-doctor-radio" value="${doc.id}" ${doc.id === selectedDoctor.id ? 'checked' : ''} onchange="setDoctorSelection('${doc.id}')" class="peer sr-only">
+          <div class="p-3.5 rounded-xl border border-slate-200 bg-white peer-checked:border-brand-600 peer-checked:ring-2 peer-checked:ring-brand-500 peer-checked:bg-brand-50/50 transition-all flex items-start gap-3">
+            <div class="w-10 h-10 rounded-lg bg-brand-900 text-gold-400 flex items-center justify-center text-sm font-bold shrink-0">
+              <i class="fa-solid fa-user-doctor"></i>
+            </div>
+            <div class="flex-1 min-w-0">
+              <div class="flex items-center justify-between">
+                <span class="font-bold text-xs text-slate-900 truncate">${doc.name}</span>
+                <span class="text-[10px] text-emerald-700 font-bold">${doc.experience}</span>
+              </div>
+              <p class="text-[10px] text-brand-700 font-semibold truncate">${doc.title}</p>
+              <div class="flex items-center justify-between mt-1 text-[10px] text-slate-500">
+                <span>${doc.room}</span>
+                <span class="font-mono font-bold text-slate-800">${doc.fee}</span>
+              </div>
+            </div>
+          </div>
+        </label>
+      `).join('');
+    }
+
+    function setDoctorSelection(docId) {
+      selectedDoctor = doctorsDB.find(d => d.id === docId) || doctorsDB[0];
+    }
+
+    function filterDoctorsByDept() {
+      renderDoctorsGrid();
+    }
+
+    function bookWithDoctor(doctorName) {
+      const doc = doctorsDB.find(d => d.name.includes(doctorName.split(',')[0])) || doctorsDB[0];
+      selectedDoctor = doc;
+      document.getElementById('op-dept-select').value = doc.dept;
+      renderDoctorsGrid();
+      // Scroll to booking section
+      document.getElementById('op-booking').scrollIntoView({ behavior: 'smooth' });
+    }
+
+    function filterSlotWindow(windowName) {
+      selectedSlotWindow = windowName;
+      ['morning', 'afternoon', 'evening'].forEach(w => {
+        const btn = document.getElementById(`btn-win-${w}`);
+        if (w === windowName) {
+          btn.className = "py-3 text-xs font-bold rounded-lg border border-brand-500 bg-brand-50 text-brand-800 transition-all";
+        } else {
+          btn.className = "py-3 text-xs font-bold rounded-lg border border-slate-200 bg-white text-slate-600 hover:bg-slate-50 transition-all";
+        }
+      });
+      renderTimeSlots();
+    }
+
+    function renderTimeSlots() {
+      const slotsGrid = document.getElementById('slots-grid');
+      let slots = [];
+      if (selectedSlotWindow === 'morning') {
+        slots = ["09:00 AM", "09:30 AM", "10:00 AM", "10:30 AM", "11:00 AM", "11:30 AM", "12:00 PM", "12:30 PM"];
+      } else if (selectedSlotWindow === 'afternoon') {
+        slots = ["02:00 PM", "02:30 PM", "03:00 PM", "03:30 PM", "04:00 PM", "04:30 PM"];
+      } else {
+        slots = ["05:00 PM", "05:30 PM", "06:00 PM", "06:30 PM", "07:00 PM", "07:30 PM"];
+      }
+
+      slotsGrid.innerHTML = slots.map(time => `
+        <button type="button" onclick="selectSlot('${time}')" class="py-2 px-2 text-xs font-bold rounded-lg border ${time === selectedSlot ? 'border-brand-600 bg-brand-700 text-white shadow-sm' : 'border-slate-200 bg-white text-slate-700 hover:bg-slate-50'} transition-all text-center">
+          ${time}
+        </button>
+      `).join('');
+    }
+
+    function selectSlot(time) {
+      selectedSlot = time;
+      renderTimeSlots();
+    }
+
+    function nextBookingStep(targetStep) {
+      if (targetStep) {
+        currentBookingStep = targetStep;
+      } else {
+        currentBookingStep = Math.min(currentBookingStep + 1, 4);
+      }
+
+      // Hide all panes
+      for (let i = 1; i <= 4; i++) {
+        const pane = document.getElementById(`step-pane-${i}`);
+        if (pane) pane.classList.add('hidden');
+        
+        const node = document.getElementById(`step-node-${i}`);
+        if (node) {
+          if (i <= currentBookingStep) {
+            node.className = "w-10 h-10 rounded-full bg-brand-700 text-white flex items-center justify-center font-bold text-sm shadow-md ring-4 ring-white";
+          } else {
+            node.className = "w-10 h-10 rounded-full bg-slate-200 text-slate-600 flex items-center justify-center font-bold text-sm shadow-md ring-4 ring-white";
+          }
+        }
+      }
+
+      // Show target pane
+      const activePane = document.getElementById(`step-pane-${currentBookingStep}`);
+      if (activePane) activePane.classList.remove('hidden');
+
+      // Update progress line
+      const progressPercent = ((currentBookingStep - 1) / 3) * 100;
+      document.getElementById('booking-step-line').style.width = `${progressPercent}%`;
+
+      // Scroll wizard slightly into view
+      document.getElementById('op-booking').scrollIntoView({ behavior: 'smooth' });
+    }
+
+    function finalizeBooking() {
+      const name = document.getElementById('patient-name').value.trim();
+      const phone = document.getElementById('patient-phone').value.trim();
+      const age = document.getElementById('patient-age').value;
+      const gender = document.getElementById('patient-gender').value;
+      const category = document.getElementById('patient-category').value;
+      const dateVal = document.getElementById('op-date-input').value || new Date().toISOString().split('T')[0];
+
+      if (!name || !phone) {
+        alert("Please provide the Patient's Name and Contact Phone Number to proceed.");
+        return;
+      }
+
+      // Generate a realistic token number
+      const randomTokenNum = Math.floor(1000 + Math.random() * 9000);
+      const tokenString = `OP-${randomTokenNum}`;
+
+      // Populate Digital Pass
+      document.getElementById('pass-token-no').innerText = tokenString;
+      document.getElementById('pass-patient-name').innerText = name;
+      document.getElementById('pass-patient-details').innerText = `${age} Yrs / ${gender}`;
+      document.getElementById('pass-patient-phone').innerText = phone;
+      document.getElementById('pass-category').innerText = category;
+      document.getElementById('pass-doctor-name').innerText = selectedDoctor.name;
+      document.getElementById('pass-dept').innerText = selectedDoctor.deptLabel;
+      document.getElementById('pass-slot').innerText = `${dateVal} | ${selectedSlot}`;
+      document.getElementById('pass-chamber').innerText = selectedDoctor.room;
+
+      // Advance to Step 4
+      nextBookingStep(4);
+    }
+
+    function printOPPass() {
+      window.print();
+    }
+
+    function downloadCalendarInvite() {
+      const name = document.getElementById('patient-name').value || "Patient";
+      const dateVal = document.getElementById('op-date-input').value || new Date().toISOString().split('T')[0];
+      const icsData = `BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Hahnemann Royal Hospital//OP Booking//EN
+BEGIN:VEVENT
+SUMMARY:OP Consultation with ${selectedDoctor.name}
+DESCRIPTION:Outpatient consultation token at Hahnemann Royal Hospital in ${selectedDoctor.room}. Patient: ${name}.
+LOCATION:Hahnemann Royal Advanced Hospital, Sector 12
+STATUS:CONFIRMED
+END:VEVENT
+END:VCALENDAR`;
+
+      const blob = new Blob([icsData], { type: 'text/calendar;charset=utf-8' });
+      const link = document.createElement('a');
+      link.href = window.URL.createObjectURL(blob);
+      link.setAttribute('download', `Hahnemann_OP_Pass_${name.replace(/\s+/g, '_')}.ics`);
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+    }
+
+    function resetBookingForm() {
+      document.getElementById('op-booking-form').reset();
+      nextBookingStep(1);
+    }
+
+    /* =========================================================================
+       MATERIA MEDICA DATABASE & EXPLORER
+       ========================================================================= */
+    const materiaMedicaDB = [
+      {
+        name: "Arnica Montana",
+        commonName: "Leopard's Bane (Mountain Daisy)",
+        kingdom: "Vegetable (Asteraceae)",
+        potencies: "30C, 200C, 1M, 10M",
+        keynote: "The sovereign remedy for physical trauma, mechanical shock, contusions, and extravasations of blood.",
+        constitutionalAffinity: "Plethoric constitutions, muscular strains, traumatic concussion, feeling bed is too hard.",
+        modalities: "Worse: Motion, damp cold, touch. Better: Lying flat with head low."
+      },
+      {
+        name: "Lycopodium Clavatum",
+        commonName: "Club Moss",
+        kingdom: "Vegetable (Lycopodiaceae)",
+        potencies: "30C, 200C, 1M",
+        keynote: "Deep polychrest constitutional acting upon hepatic, digestive, urinary, and intellectual faculties.",
+        constitutionalAffinity: "Keen intellectual intellect with weak physical endurance; right-sided complaints, 4 PM to 8 PM aggravation.",
+        modalities: "Worse: Right side, warm room, 4-8 PM. Better: Warm drinks, cool air, loosening clothes."
+      },
+      {
+        name: "Nux Vomica",
+        commonName: "Poison Nut",
+        kingdom: "Vegetable (Loganiaceae)",
+        potencies: "30C, 200C, 1M",
+        keynote: "Premier restorative for modern high-stress executives; digestive torpor from overwork, coffee, and sedentary lifestyle.",
+        constitutionalAffinity: "Ambitious, quick-tempered, chilly individuals with ineffectual urging for stool.",
+        modalities: "Worse: Morning, mental exertion, cold dry wind. Better: Short nap, warmth, damp weather."
+      },
+      {
+        name: "Thuja Occidentalis",
+        commonName: "Arbor Vitae (Tree of Life)",
+        kingdom: "Vegetable (Cupressaceae)",
+        potencies: "30C, 200C, 1M, 10M",
+        keynote: "Chief anti-sycotic constitutional remedy for pathological tissue proliferations, warts, polypi, and vaccination sequelae.",
+        constitutionalAffinity: "Hydrogenoid constitution with oily skin, dark circles, and fixed psychosomatic illusions.",
+        modalities: "Worse: Cold damp weather, 3 AM, vaccination. Better: Warm air, scratching, stretching."
+      },
+      {
+        name: "Silicea Terra",
+        commonName: "Pure Flint Oxide",
+        kingdom: "Mineral (SiO2)",
+        potencies: "6X, 12X, 30C, 200C",
+        keynote: "The 'homeopathic scalpel' that promotes expulsion of foreign bodies, cellular suppurations, and bone re-mineralization.",
+        constitutionalAffinity: "Delicate, chilly, grit-deficient individuals with profuse sour foot perspiration and yielding disposition.",
+        modalities: "Worse: Cold air, drafts, uncovering head. Better: Warm wraps, summer heat, profuse urination."
+      },
+      {
+        name: "Calcarea Carbonica",
+        commonName: "Oyster Shell Carbonate",
+        kingdom: "Mineral / Animal",
+        potencies: "30C, 200C, 1M",
+        keynote: "Foundational remedy for metabolic assimilation, sluggish lymphatic glands, delayed dentition, and bone development.",
+        constitutionalAffinity: "Fair, fat, flabby individuals who sweat profusely on the head during sleep and crave boiled eggs.",
+        modalities: "Worse: Cold, wet weather, ascending stairs. Better: Dry weather, lying on painful side."
+      }
+    ];
+
+    function renderMateriaMedica(list = materiaMedicaDB) {
+      const container = document.getElementById('remedies-grid');
+      container.innerHTML = list.map(item => `
+        <div class="bg-white rounded-2xl p-6 shadow-sm hover:shadow-luxury border border-slate-100 transition-all flex flex-col justify-between">
+          <div>
+            <div class="flex items-center justify-between text-xs text-slate-400 font-mono">
+              <span>${item.kingdom}</span>
+              <span class="text-gold-600 font-bold">${item.potencies}</span>
+            </div>
+            <h4 class="font-royal text-lg font-bold text-slate-900 mt-2">${item.name}</h4>
+            <p class="text-xs text-brand-700 font-semibold italic">${item.commonName}</p>
+            <p class="text-xs text-slate-600 mt-3 leading-relaxed">
+              <strong>Keynote:</strong> ${item.keynote}
+            </p>
+            <div class="mt-3 p-3 bg-stone-50 rounded-xl text-[11px] text-slate-600 space-y-1">
+              <div><strong>Constitution:</strong> ${item.constitutionalAffinity}</div>
+              <div><strong>Modalities:</strong> ${item.modalities}</div>
+            </div>
+          </div>
+          <div class="mt-4 pt-3 border-t border-slate-100 flex items-center justify-between text-xs">
+            <span class="text-[10px] text-slate-400 uppercase font-semibold">Organon Verified</span>
+            <a href="#op-booking" class="text-brand-700 hover:text-brand-900 font-bold">Consult for Remedy &rarr;</a>
+          </div>
+        </div>
+      `).join('');
+    }
+
+    function filterRemedies(query) {
+      const q = query.toLowerCase().trim();
+      const filtered = materiaMedicaDB.filter(r => 
+        r.name.toLowerCase().includes(q) || 
+        r.commonName.toLowerCase().includes(q) || 
+        r.keynote.toLowerCase().includes(q)
+      );
+      renderMateriaMedica(filtered);
+    }
+
+    /* =========================================================================
+       UI HELPERS & INITIALIZATION
+       ========================================================================= */
+    function toggleMobileNav() {
+      const nav = document.getElementById('mobile-nav');
+      nav.classList.toggle('hidden');
+    }
+
+    function toggleAcuteGuideModal() {
+      const modal = document.getElementById('acute-modal');
+      modal.classList.toggle('hidden');
+      modal.classList.toggle('flex');
+    }
+
+    // Live Token Number subtle increment simulator
+    setInterval(() => {
+      const tokenElem = document.getElementById('live-token-number');
+      if (tokenElem) {
+        let currentNum = parseInt(tokenElem.innerText.replace('OP-', '')) || 48;
+        if (Math.random() > 0.6) {
+          currentNum = (currentNum >= 80) ? 12 : currentNum + 1;
+          tokenElem.innerText = `OP-${currentNum}`;
+        }
+      }
+    }, 15000);
+
+    // Initialize Default Values on Load
+    document.addEventListener('DOMContentLoaded', () => {
+      // Set today's date in OP date input
+      const dateInput = document.getElementById('op-date-input');
+      const today = new Date().toISOString().split('T')[0];
+      if (dateInput) dateInput.value = today;
+
+      computeDietProtocol();
+      renderDoctorsGrid();
+      renderTimeSlots();
+      renderMateriaMedica();
+    });
+  </script>
+</body>
+</html>

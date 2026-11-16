@@ -1,0 +1,20 @@
+{
+  "name": "hahnemann-royal-hospital-website",
+  "version": "1.0.0",
+  "description": "Ultra-Premium Homeopathic Super-Specialty Hospital Web Portal with Interactive OP Booking & Animated Disease Diet Calculator",
+  "main": "index.html",
+  "scripts": {
+    "start": "serve .",
+    "dev": "serve ."
+  },
+  "keywords": [
+    "hospital",
+    "homeopathy",
+    "medical",
+    "diet-calculator",
+    "op-booking",
+    "healthcare"
+  ],
+  "author": "Hahnemann Royal Hospital",
+  "license": "MIT"
+}
